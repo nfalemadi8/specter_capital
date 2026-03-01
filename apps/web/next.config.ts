@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   transpilePackages: ['@specter/ui', '@specter/shared-types', '@specter/encryption'],
   images: {
     remotePatterns: [
