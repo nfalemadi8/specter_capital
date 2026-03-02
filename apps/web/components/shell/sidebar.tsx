@@ -13,7 +13,7 @@ import { NAV_SECTIONS } from '@/lib/constants/nav';
 import { useUIStore } from '@/lib/stores/ui-store';
 import { usePermissions } from '@/lib/hooks/use-permissions';
 
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
+const ICON_MAP: Record<string, React.ComponentType<{ size?: string | number }>> = {
   LayoutDashboard, TrendingUp, PieChart, Monitor, Handshake, PhoneCall,
   Building2, Home, ArrowLeftRight, Receipt, Shield, Users,
   Calculator, FileSearch, FileBarChart, Scale, Heart,
