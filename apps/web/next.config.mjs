@@ -18,6 +18,7 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'recharts', 'date-fns'],
+    missingSuspenseWithCSRBailout: false,
   },
 };
 
