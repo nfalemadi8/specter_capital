@@ -17,7 +17,7 @@ export function Topbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push('/login');
+    router.push('/signin');
     router.refresh();
   };
 

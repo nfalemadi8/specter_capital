@@ -1,142 +1,132 @@
 'use client';
 
-import { Suspense } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { useTenant } from '@/lib/hooks/use-tenant';
-import { useRealtime } from '@/lib/hooks/use-realtime';
-import { formatCurrency, formatPercent } from '@/lib/utils/format';
-import { StatCard } from '@specter/ui';
-import { TrendingUp, Wallet, BarChart3, Clock } from 'lucide-react';
-import { AllocationDonut } from '@/components/dashboard/allocation-donut';
-import { ActivityFeed } from '@/components/dashboard/activity-feed';
-import { EntityTree } from '@/components/dashboard/entity-tree';
-import { QuickActions } from '@/components/dashboard/quick-actions';
-import { WatchlistPanel } from '@/components/dashboard/watchlist-panel';
-import { LoadingSkeleton } from '@specter/ui';
+import {
+  LineChart,
+  Briefcase,
+  Building2,
+  Landmark,
+  PieChart,
+  Shield,
+  ArrowRight,
+} from 'lucide-react';
+
+const modules = [
+  {
+    title: 'Portfolio Intelligence',
+    description: 'Multi-asset tracking, analytics, and real-time P&L across all accounts.',
+    icon: LineChart,
+    href: '/portfolio',
+  },
+  {
+    title: 'Deal Pipeline',
+    description: 'PE/VC deal flow management with scoring, J-curve analytics, and exit modeling.',
+    icon: Briefcase,
+    href: '/deals',
+  },
+  {
+    title: 'Entity Management',
+    description: 'Interactive org charts, K-1 tracking, and compliance for all entities.',
+    icon: Building2,
+    href: '/entities',
+  },
+  {
+    title: 'Treasury Operations',
+    description: 'Cash flow forecasting, wire workflows, and sweep account optimization.',
+    icon: Landmark,
+    href: '/cash-flow',
+  },
+  {
+    title: 'Tax & Compliance',
+    description: 'Tax-loss harvesting, multi-state filing, and full audit trail.',
+    icon: PieChart,
+    href: '/tax',
+  },
+  {
+    title: 'Family Governance',
+    description: 'Constitution management, voting systems, and succession planning.',
+    icon: Shield,
+    href: '/governance',
+  },
+];
 
 export default function DashboardPage() {
-  const { tenant } = useTenant();
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const supabase = createClient();
 
-  // Fetch portfolio stats
-  const { data: stats } = useQuery({
-    queryKey: ['dashboard-stats', tenant?.id],
-    queryFn: async () => {
-      if (!tenant) return null;
-
-      const { data: holdings } = await supabase
-        .from('holdings')
-        .select('market_value, unrealized_pnl, cost_basis, asset_class, sector')
-        .eq('tenant_id', tenant.id);
-
-      const totalNetWorth = holdings?.reduce((sum, h) => sum + (h.market_value ?? 0), 0) ?? 0;
-      const totalCostBasis = holdings?.reduce((sum, h) => sum + (h.cost_basis ?? 0), 0) ?? 0;
-      const totalUnrealized = holdings?.reduce((sum, h) => sum + (h.unrealized_pnl ?? 0), 0) ?? 0;
-      const ytdReturn = totalCostBasis > 0 ? (totalUnrealized / totalCostBasis) * 100 : 0;
-
-      // Get liquid assets (cash + equities + ETFs)
-      const { data: accounts } = await supabase
-        .from('accounts')
-        .select('cash_balance')
-        .eq('tenant_id', tenant.id);
-      const liquidCash = accounts?.reduce((sum, a) => sum + (a.cash_balance ?? 0), 0) ?? 0;
-      const liquidHoldings = holdings
-        ?.filter((h) => ['equity', 'etf', 'crypto'].includes(h.asset_class))
-        .reduce((sum, h) => sum + (h.market_value ?? 0), 0) ?? 0;
-
-      // Get pending actions
-      const { count: pendingBills } = await supabase
-        .from('bill_payments')
-        .select('*', { count: 'exact', head: true })
-        .eq('tenant_id', tenant.id)
-        .eq('status', 'pending');
-
-      const { count: pendingCalls } = await supabase
-        .from('capital_calls')
-        .select('*', { count: 'exact', head: true })
-        .eq('tenant_id', tenant.id)
-        .eq('status', 'pending');
-
-      // Asset allocation breakdown
-      const allocation: Record<string, number> = {};
-      holdings?.forEach((h) => {
-        const key = h.sector ?? h.asset_class ?? 'Other';
-        allocation[key] = (allocation[key] ?? 0) + (h.market_value ?? 0);
-      });
-
-      return {
-        totalNetWorth,
-        liquidAssets: liquidCash + liquidHoldings,
-        ytdReturn,
-        pendingActions: (pendingBills ?? 0) + (pendingCalls ?? 0),
-        allocation,
-      };
-    },
-    enabled: !!tenant?.id,
-  });
-
-  // Real-time updates
-  useRealtime('holdings', ['dashboard-stats', tenant?.id ?? ''], tenant?.id);
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      setUserEmail(data.user?.email ?? null);
+    });
+  }, [supabase]);
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-        <QuickActions />
+    <div className="space-y-8">
+      {/* Welcome Header */}
+      <div>
+        <h1 className="text-2xl font-bold text-[#e8e0d0]">
+          Welcome to <span className="text-[#c9a55a]">Phantom Treasury</span>
+        </h1>
+        {userEmail && (
+          <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">
+            Signed in as <span className="text-[#e8e0d0]">{userEmail}</span>
+          </p>
+        )}
       </div>
 
-      {/* Stat Cards */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          title="Total Net Worth"
-          value={stats ? formatCurrency(stats.totalNetWorth, 'USD', true) : '--'}
-          change={stats ? formatPercent(stats.ytdReturn) : undefined}
-          changeType={stats && stats.ytdReturn >= 0 ? 'positive' : 'negative'}
-          icon={<TrendingUp size={20} />}
-        />
-        <StatCard
-          title="Liquid Assets"
-          value={stats ? formatCurrency(stats.liquidAssets, 'USD', true) : '--'}
-          icon={<Wallet size={20} />}
-        />
-        <StatCard
-          title="YTD Return"
-          value={stats ? formatPercent(stats.ytdReturn) : '--'}
-          changeType={stats && stats.ytdReturn >= 0 ? 'positive' : 'negative'}
-          icon={<BarChart3 size={20} />}
-        />
-        <StatCard
-          title="Pending Actions"
-          value={stats ? String(stats.pendingActions) : '--'}
-          icon={<Clock size={20} />}
-        />
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-6">
-          {/* Asset Allocation */}
-          <Suspense fallback={<LoadingSkeleton variant="chart" />}>
-            <AllocationDonut allocation={stats?.allocation ?? {}} />
-          </Suspense>
-
-          {/* Activity Feed */}
-          <Suspense fallback={<LoadingSkeleton variant="card" />}>
-            <ActivityFeed />
-          </Suspense>
+      {/* Module Cards */}
+      <div>
+        <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-4">
+          Modules
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {modules.map((mod) => (
+            <Link
+              key={mod.href}
+              href={mod.href}
+              className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[#c9a55a]/30 transition-colors"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-[#c9a55a]/10 flex items-center justify-center">
+                  <mod.icon size={18} className="text-[#c9a55a]" />
+                </div>
+                <h3 className="text-sm font-semibold text-[#e8e0d0]">{mod.title}</h3>
+              </div>
+              <p className="text-xs text-[var(--color-muted-foreground)] leading-relaxed mb-3">
+                {mod.description}
+              </p>
+              <span className="inline-flex items-center gap-1 text-xs text-[#c9a55a] group-hover:gap-1.5 transition-all">
+                Open
+                <ArrowRight size={12} />
+              </span>
+            </Link>
+          ))}
         </div>
+      </div>
 
-        <div className="space-y-6">
-          {/* Entity Tree */}
-          <Suspense fallback={<LoadingSkeleton variant="card" />}>
-            <EntityTree />
-          </Suspense>
-
-          {/* Watchlist */}
-          <Suspense fallback={<LoadingSkeleton variant="card" />}>
-            <WatchlistPanel />
-          </Suspense>
+      {/* Quick Stats Placeholder */}
+      <div>
+        <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-4">
+          Overview
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { label: 'Total Net Worth', value: '--', sub: 'Connect accounts to populate' },
+            { label: 'Liquid Assets', value: '--', sub: 'Cash + public securities' },
+            { label: 'YTD Return', value: '--', sub: 'vs. benchmarks' },
+            { label: 'Pending Actions', value: '0', sub: 'Bills, approvals, filings' },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+            >
+              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">{stat.label}</p>
+              <p className="text-2xl font-bold text-[#e8e0d0] font-mono">{stat.value}</p>
+              <p className="text-xs text-[var(--color-muted)] mt-1">{stat.sub}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
