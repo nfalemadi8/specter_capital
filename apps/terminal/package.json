@@ -1,0 +1,11 @@
+{
+  "name": "@specter/terminal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Specter Terminal - placeholder'",
+    "build": "echo 'Specter Terminal - placeholder'",
+    "lint": "echo 'no lint configured'",
+    "type-check": "echo 'no type-check configured'"
+  }
+}
