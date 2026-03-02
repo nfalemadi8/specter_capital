@@ -8,9 +8,9 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { label: 'Platform', href: '/platform' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Integrations', href: '/integrations' },
   { label: 'Security', href: '/security' },
   { label: 'About', href: '/about' },
+  { label: 'FAQ', href: '/faq' },
 ];
 
 export function Navbar() {
@@ -28,22 +28,23 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-[#0a0e17]/90 backdrop-blur-xl border-b border-[#1e293b]'
+          ? 'bg-[#0a0e17]/90 backdrop-blur-xl border-b border-[#1e293b]/60'
           : 'bg-transparent'
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2.5">
             <div className="relative h-8 w-8">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#22d3ee] to-[#a78bfa]" />
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#c9a55a] to-[#d4b876]" />
               <div className="absolute inset-[2px] rounded-[6px] bg-[#0a0e17] flex items-center justify-center">
-                <span className="text-sm font-bold text-[#22d3ee] font-mono">S</span>
+                <span className="text-sm font-bold text-[#c9a55a] font-mono">P</span>
               </div>
             </div>
-            <span className="text-lg font-bold text-white tracking-tight">
-              Specter
+            <span className="text-lg font-semibold tracking-tight">
+              <span className="text-[#e8e0d0]">Phantom</span>{' '}
+              <span className="text-[#c9a55a]">Treasury</span>
             </span>
           </Link>
 
@@ -53,7 +54,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm text-[#94a3b8] hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="px-3 py-2 text-sm text-[#8a919e] hover:text-[#e8e0d0] transition-colors rounded-lg hover:bg-white/[0.03]"
               >
                 {link.label}
               </Link>
@@ -63,23 +64,23 @@ export function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="/login"
-              className="px-4 py-2 text-sm text-[#94a3b8] hover:text-white transition-colors"
+              href="/signin"
+              className="px-4 py-2 text-sm text-[#8a919e] hover:text-[#e8e0d0] transition-colors"
             >
-              Sign in
+              Sign In
             </Link>
             <Link
-              href="/register"
-              className="px-4 py-2 text-sm font-medium text-[#0a0e17] bg-gradient-to-r from-[#22d3ee] to-[#a78bfa] rounded-lg hover:opacity-90 transition-opacity"
+              href="/signup"
+              className="px-5 py-2 text-sm font-medium text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-colors"
             >
-              Get Started
+              Request Access
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#94a3b8] hover:text-white"
+            className="md:hidden p-2 text-[#8a919e] hover:text-[#e8e0d0]"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -95,23 +96,23 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2.5 text-sm text-[#94a3b8] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                className="block px-3 py-2.5 text-sm text-[#8a919e] hover:text-[#e8e0d0] hover:bg-white/[0.03] rounded-lg transition-colors"
               >
                 {link.label}
               </Link>
             ))}
             <div className="pt-4 border-t border-[#1e293b] space-y-2">
               <Link
-                href="/login"
-                className="block px-3 py-2.5 text-sm text-[#94a3b8] hover:text-white"
+                href="/signin"
+                className="block px-3 py-2.5 text-sm text-[#8a919e] hover:text-[#e8e0d0]"
               >
-                Sign in
+                Sign In
               </Link>
               <Link
-                href="/register"
-                className="block px-3 py-2.5 text-sm font-medium text-center text-[#0a0e17] bg-gradient-to-r from-[#22d3ee] to-[#a78bfa] rounded-lg"
+                href="/signup"
+                className="block px-3 py-2.5 text-sm font-medium text-center text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876]"
               >
-                Get Started
+                Request Access
               </Link>
             </div>
           </div>

@@ -1,139 +1,82 @@
 import {
-  BarChart3,
+  LineChart,
   Briefcase,
   Building2,
-  FileText,
-  Shield,
-  Users,
   Landmark,
-  Zap,
-  Globe,
-  Lock,
-  LineChart,
   PieChart,
+  Shield,
 } from 'lucide-react';
 
-const features = [
+const modules = [
   {
     icon: LineChart,
     title: 'Portfolio Intelligence',
     description:
-      'Real-time tracking across equities, alternatives, crypto, and private investments with multi-broker aggregation.',
-    color: '#22d3ee',
+      'Real-time aggregation across brokerages, custodians, and alternatives. Multi-asset tracking with benchmark overlays and tax-lot visibility.',
   },
   {
     icon: Briefcase,
     title: 'Deal Pipeline',
     description:
-      'Manage PE/VC deal flow with scoring, J-curve analytics, MOIC calculators, and automated LP report parsing.',
-    color: '#a78bfa',
+      'PE/VC deal flow management with scoring, J-curve analytics, MOIC calculators, and automated LP report parsing.',
   },
   {
     icon: Building2,
     title: 'Entity Management',
     description:
-      'Visual org charts, K-1 tracking, inter-entity loans, and automated BOI/compliance filings across all structures.',
-    color: '#34d399',
+      'Visual org charts, K-1 tracking, inter-entity loans, BOI compliance, and automated filing calendars across all structures.',
   },
   {
     icon: Landmark,
-    title: 'Real Estate',
+    title: 'Treasury Operations',
     description:
-      'Property maps, rental waterfalls, cap rate analysis, 1031 exchange tracking, and tenant management.',
-    color: '#f59e0b',
+      'Cash flow forecasting, sweep optimization, wire workflows with multi-level approvals, and vendor payment management.',
   },
   {
     icon: PieChart,
-    title: 'Cash Flow & Bill Pay',
+    title: 'Tax & Compliance',
     description:
-      'Forecasting engine, sweep optimization, wire workflows, multi-level approval chains, and vendor management.',
-    color: '#22d3ee',
-  },
-  {
-    icon: BarChart3,
-    title: 'Tax Optimization',
-    description:
-      'Tax-loss harvesting scanner, quarterly estimates, multi-state filing, QSBS tracking, and gift tax planning.',
-    color: '#a78bfa',
-  },
-  {
-    icon: FileText,
-    title: 'Document Vault',
-    description:
-      'End-to-end encrypted document storage with version history, full-text search, and granular sharing controls.',
-    color: '#34d399',
-  },
-  {
-    icon: Users,
-    title: 'Family Governance',
-    description:
-      'Family constitution editor, voting system, succession planning, education tracking, and meeting management.',
-    color: '#f59e0b',
+      'Tax-loss harvesting scanner, quarterly estimates, multi-state support, QSBS tracking, and comprehensive audit trails.',
   },
   {
     icon: Shield,
-    title: 'Enterprise Security',
+    title: 'Family Governance',
     description:
-      'SOC 2 Type II certified, 256-bit E2E encryption, RLS multi-tenancy, SSO, and comprehensive audit trails.',
-    color: '#22d3ee',
-  },
-  {
-    icon: Zap,
-    title: 'AI Copilot',
-    description:
-      'Natural language queries across your financial data, automated report generation, and proactive insights.',
-    color: '#a78bfa',
-  },
-  {
-    icon: Globe,
-    title: 'Multi-Currency',
-    description:
-      'Support for 8+ currencies with automatic conversion, reporting in any denomination, and FX exposure tracking.',
-    color: '#34d399',
-  },
-  {
-    icon: Lock,
-    title: 'White-Label',
-    description:
-      'Custom branding, colors, fonts, logos, and domain mapping. Make the platform your own for your family.',
-    color: '#f59e0b',
+      'Family constitution editor, formal voting systems, succession planning, education tracking, and encrypted communications.',
   },
 ];
 
 export function FeaturesSection() {
   return (
     <section className="relative py-24">
+      <div className="section-divider mb-24" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Everything your family office needs,{' '}
-            <span className="gradient-text">nothing it doesn&apos;t</span>
+          <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
+            The Platform
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#e8e0d0] mb-4">
+            Six modules. One operating system.
           </h2>
-          <p className="text-lg text-[#94a3b8]">
-            Built by family office operators who were tired of stitching together
-            12 different tools. One platform, zero compromise.
+          <p className="text-lg text-[#8a919e]">
+            Every capability your family office needs, unified under a single
+            encrypted infrastructure — no more stitching together a dozen tools.
           </p>
         </div>
 
-        {/* Features Grid */}
+        {/* Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="feature-card p-6 group"
-            >
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: `${feature.color}15` }}
-              >
-                <feature.icon size={20} style={{ color: feature.color }} />
+          {modules.map((mod) => (
+            <div key={mod.title} className="feature-card p-6 group">
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-[#c9a55a]/10">
+                <mod.icon size={20} className="text-[#c9a55a]" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#22d3ee] transition-colors">
-                {feature.title}
+              <h3 className="text-lg font-semibold text-[#e8e0d0] mb-2 group-hover:text-[#c9a55a] transition-colors">
+                {mod.title}
               </h3>
-              <p className="text-sm text-[#94a3b8] leading-relaxed">
-                {feature.description}
+              <p className="text-sm text-[#8a919e] leading-relaxed">
+                {mod.description}
               </p>
             </div>
           ))}

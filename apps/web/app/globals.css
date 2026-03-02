@@ -21,6 +21,13 @@
   --color-muted: #334155;
   --color-muted-foreground: #94a3b8;
 
+  /* Phantom Treasury — Marketing palette */
+  --color-gold: #c9a55a;
+  --color-gold-light: #d4b876;
+  --color-gold-dim: rgba(201, 165, 90, 0.15);
+  --color-ivory: #e8e0d0;
+  --color-slate-text: #8a919e;
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -77,42 +84,34 @@
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
   }
 
-  /* Marketing page utilities */
+  /* Phantom Treasury — Marketing utilities */
   .gradient-text {
-    background: linear-gradient(135deg, #22d3ee, #a78bfa);
+    background: linear-gradient(135deg, #c9a55a, #d4b876);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .gradient-border {
-    position: relative;
-    border: 1px solid transparent;
-    background-clip: padding-box;
-  }
-
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, rgba(34, 211, 238, 0.3), rgba(167, 139, 250, 0.3));
-    z-index: -1;
+  .gradient-text-ivory {
+    background: linear-gradient(135deg, #e8e0d0, #c9a55a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .hero-glow {
     background: radial-gradient(
       ellipse 60% 50% at 50% 0%,
-      rgba(34, 211, 238, 0.12) 0%,
-      rgba(167, 139, 250, 0.06) 40%,
+      rgba(201, 165, 90, 0.08) 0%,
+      rgba(201, 165, 90, 0.03) 40%,
       transparent 70%
     );
   }
 
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(30, 41, 59, 0.4) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(30, 41, 59, 0.4) 1px, transparent 1px);
+      linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -125,9 +124,18 @@
   }
 
   .feature-card:hover {
-    border-color: rgba(34, 211, 238, 0.3);
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.08);
+    border-color: rgba(201, 165, 90, 0.3);
+    box-shadow: 0 0 30px rgba(201, 165, 90, 0.06);
     transform: translateY(-2px);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(201, 165, 90, 0.12);
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 165, 90, 0.2), transparent);
   }
 }
 

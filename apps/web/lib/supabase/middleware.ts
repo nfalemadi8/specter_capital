@@ -12,8 +12,22 @@ const PUBLIC_ROUTES = [
   '/faq',
 ];
 
+// Auth routes (accessible without authentication, redirect away if already authed)
+const AUTH_ROUTES = [
+  '/login',
+  '/register',
+  '/signin',
+  '/signup',
+  '/forgot-password',
+  '/accept-invite',
+];
+
 function isPublicRoute(pathname: string) {
   return PUBLIC_ROUTES.includes(pathname);
+}
+
+function isAuthRoute(pathname: string) {
+  return AUTH_ROUTES.some((route) => pathname.startsWith(route));
 }
 
 export async function updateSession(request: NextRequest) {
@@ -43,11 +57,11 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // Auth routes — redirect to dashboard if already authenticated
+  // (except accept-invite which should work even when logged in)
   if (
     user &&
-    (request.nextUrl.pathname.startsWith('/login') ||
-      request.nextUrl.pathname.startsWith('/register') ||
-      request.nextUrl.pathname.startsWith('/forgot-password'))
+    isAuthRoute(request.nextUrl.pathname) &&
+    !request.nextUrl.pathname.startsWith('/accept-invite')
   ) {
     const url = request.nextUrl.clone();
     url.pathname = '/dashboard';
@@ -66,34 +80,35 @@ export async function updateSession(request: NextRequest) {
     return supabaseResponse;
   }
 
-  // Protected routes — redirect to login if not authenticated
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/register') &&
-    !request.nextUrl.pathname.startsWith('/forgot-password') &&
-    !request.nextUrl.pathname.startsWith('/accept-invite') &&
-    !request.nextUrl.pathname.startsWith('/api/')
-  ) {
+  // Allow auth routes without auth
+  if (isAuthRoute(request.nextUrl.pathname)) {
+    return supabaseResponse;
+  }
+
+  // Allow API routes
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    return supabaseResponse;
+  }
+
+  // Protected routes — redirect to signin if not authenticated
+  if (!user) {
     const url = request.nextUrl.clone();
-    url.pathname = '/login';
+    url.pathname = '/signin';
     url.searchParams.set('redirect', request.nextUrl.pathname);
     return NextResponse.redirect(url);
   }
 
   // Resolve tenant context for authenticated users on dashboard routes
-  if (user) {
-    const { data: membership } = await supabase
-      .from('tenant_members')
-      .select('tenant_id, role')
-      .eq('user_id', user.id)
-      .eq('is_active', true)
-      .single();
+  const { data: membership } = await supabase
+    .from('tenant_members')
+    .select('tenant_id, role')
+    .eq('user_id', user.id)
+    .eq('is_active', true)
+    .single();
 
-    if (membership) {
-      supabaseResponse.headers.set('x-tenant-id', membership.tenant_id);
-      supabaseResponse.headers.set('x-user-role', membership.role);
-    }
+  if (membership) {
+    supabaseResponse.headers.set('x-tenant-id', membership.tenant_id);
+    supabaseResponse.headers.set('x-user-role', membership.role);
   }
 
   return supabaseResponse;
