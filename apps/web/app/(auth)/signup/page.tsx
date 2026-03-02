@@ -4,7 +4,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import { Loader2 } from 'lucide-react';
+import {
+  AuthCard,
+  AuthHeader,
+  AuthError,
+  AuthInput,
+  AuthButton,
+  AuthSuccess,
+} from '@/components/auth/auth-form';
 
 export default function SignUpPage() {
   const [fullName, setFullName] = useState('');
@@ -60,13 +67,7 @@ export default function SignUpPage() {
 
   if (success) {
     return (
-      <div className="rounded-xl border border-[#1e293b] bg-[#0f1423] p-8 text-center space-y-4">
-        <div className="w-12 h-12 rounded-full bg-[#c9a55a]/10 flex items-center justify-center mx-auto">
-          <svg className="w-6 h-6 text-[#c9a55a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </div>
-        <h2 className="text-lg font-semibold text-[#e8e0d0]">Check your email</h2>
+      <AuthSuccess icon="mail" title="Check your email">
         <p className="text-sm text-[#8a919e]">
           We sent a confirmation link to{' '}
           <strong className="text-[#e8e0d0]">{email}</strong>
@@ -77,111 +78,67 @@ export default function SignUpPage() {
         >
           Back to sign in
         </Link>
-      </div>
+      </AuthSuccess>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSignUp}
-      className="rounded-xl border border-[#1e293b] bg-[#0f1423] p-8 space-y-6"
-    >
-      <div>
-        <h2 className="text-lg font-semibold text-[#e8e0d0]">Create your account</h2>
-        <p className="mt-1 text-sm text-[#8a919e]">
-          Request early access to Phantom Treasury.
-        </p>
-      </div>
+    <AuthCard>
+      <form onSubmit={handleSignUp} className="space-y-6">
+        <AuthHeader
+          title="Create your account"
+          subtitle="Request early access to Phantom Treasury."
+        />
 
-      {error && (
-        <div className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-sm text-red-400">
-          {error}
-        </div>
-      )}
+        <AuthError message={error} />
 
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="fullName" className="block text-sm font-medium text-[#8a919e] mb-1.5">
-            Full Name
-          </label>
-          <input
+        <div className="space-y-4">
+          <AuthInput
             id="fullName"
-            type="text"
-            required
+            label="Full Name"
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className="w-full rounded-lg border border-[#1e293b] bg-[#0a0e17] px-4 py-2.5 text-[#e8e0d0] placeholder:text-[#334155] focus:border-[#c9a55a]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a55a]/25 transition-colors"
+            onChange={setFullName}
             placeholder="James Harrison"
           />
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-[#8a919e] mb-1.5">
-            Email address
-          </label>
-          <input
+          <AuthInput
             id="email"
+            label="Email address"
             type="email"
-            required
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-lg border border-[#1e293b] bg-[#0a0e17] px-4 py-2.5 text-[#e8e0d0] placeholder:text-[#334155] focus:border-[#c9a55a]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a55a]/25 transition-colors"
+            onChange={setEmail}
             placeholder="you@example.com"
           />
-        </div>
-
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-[#8a919e] mb-1.5">
-            Password
-          </label>
-          <input
+          <AuthInput
             id="password"
+            label="Password"
             type="password"
-            required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-lg border border-[#1e293b] bg-[#0a0e17] px-4 py-2.5 text-[#e8e0d0] placeholder:text-[#334155] focus:border-[#c9a55a]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a55a]/25 transition-colors"
+            onChange={setPassword}
             placeholder="Minimum 8 characters"
           />
-        </div>
-
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#8a919e] mb-1.5">
-            Confirm Password
-          </label>
-          <input
+          <AuthInput
             id="confirmPassword"
+            label="Confirm Password"
             type="password"
-            required
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full rounded-lg border border-[#1e293b] bg-[#0a0e17] px-4 py-2.5 text-[#e8e0d0] placeholder:text-[#334155] focus:border-[#c9a55a]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a55a]/25 transition-colors"
+            onChange={setConfirmPassword}
             placeholder="Confirm your password"
           />
         </div>
-      </div>
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="w-full rounded-lg bg-[#c9a55a] px-4 py-2.5 text-sm font-semibold text-[#0a0e17] hover:bg-[#d4b876] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
-      >
-        {isLoading ? (
-          <>
-            <Loader2 size={16} className="animate-spin" />
-            Creating account...
-          </>
-        ) : (
-          'Create Account'
-        )}
-      </button>
+        <AuthButton
+          isLoading={isLoading}
+          label="Create Account"
+          loadingLabel="Creating account..."
+        />
 
-      <p className="text-center text-sm text-[#8a919e]">
-        Already have an account?{' '}
-        <Link href="/signin" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
-          Sign in
-        </Link>
-      </p>
-    </form>
+        <p className="text-center text-sm text-[#8a919e]">
+          Already have an account?{' '}
+          <Link href="/signin" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
+            Sign in
+          </Link>
+        </p>
+      </form>
+    </AuthCard>
   );
 }
