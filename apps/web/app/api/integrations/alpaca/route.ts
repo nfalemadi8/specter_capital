@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createServerSupabaseClient } from '@/lib/supabase/server';
 
 const ALPACA_BASE_URL = process.env.ALPACA_API_KEY?.startsWith('PK')
   ? 'https://paper-api.alpaca.markets'
   : 'https://api.alpaca.markets';
 
 export async function POST(request: NextRequest) {
-  const supabase = await createClient();
+  const supabase = await createServerSupabaseClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
