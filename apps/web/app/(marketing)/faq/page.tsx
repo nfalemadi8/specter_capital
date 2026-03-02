@@ -121,8 +121,13 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 hero-glow" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.06]" />
+      <div className="absolute top-40 right-[12%] w-72 h-72 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
@@ -162,14 +167,14 @@ export default function FAQPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/about"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-colors"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
             >
               Talk to Us
               <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
               href="/signup"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:bg-white/5 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:border-[#c9a55a]/30 hover:bg-white/[0.02] transition-all"
             >
               Request Early Access
             </Link>

@@ -123,8 +123,14 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function PricingPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 hero-glow" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+      <div className="absolute top-60 left-[10%] w-80 h-80 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[40rem] right-[5%] w-96 h-96 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
@@ -146,8 +152,8 @@ export default function PricingPage() {
             <div
               key={plan.name}
               className={cn(
-                'relative glass-panel p-8 flex flex-col',
-                plan.featured && 'ring-1 ring-[#c9a55a]/40'
+                'relative feature-card p-8 flex flex-col',
+                plan.featured && 'ring-1 ring-[#c9a55a]/40 gold-glow'
               )}
             >
               {plan.featured && (
@@ -173,11 +179,11 @@ export default function PricingPage() {
               </div>
 
               <Link
-                href={plan.name === 'Sovereign' ? '/about#contact' : '/register'}
+                href={plan.name === 'Sovereign' ? '/about' : '/signup'}
                 className={cn(
                   'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg transition-all mb-8',
                   plan.featured
-                    ? 'text-[#0a0e17] bg-[#c9a55a] hover:bg-[#d4b876]'
+                    ? 'text-[#0a0e17] bg-[#c9a55a] hover:bg-[#d4b876] shadow-lg shadow-[#c9a55a]/15'
                     : 'text-[#e8e0d0] border border-[#1e293b] hover:border-[#c9a55a]/30 hover:bg-white/[0.02]'
                 )}
               >
@@ -208,7 +214,7 @@ export default function PricingPage() {
           <h2 className="text-2xl font-bold text-[#e8e0d0] text-center mb-8">
             Pricing Questions
           </h2>
-          <div className="glass-panel px-6">
+          <div className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 backdrop-blur-sm px-6">
             {faqs.map((faq, i) => (
               <FAQItem key={i} question={faq.q} answer={faq.a} />
             ))}

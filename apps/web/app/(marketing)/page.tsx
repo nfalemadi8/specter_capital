@@ -4,9 +4,9 @@ import { SocialProofSection } from '@/components/marketing/social-proof-section'
 import { CTASection } from '@/components/marketing/cta-section';
 
 export const metadata = {
-  title: 'Specter — Unified Family Office Platform',
+  title: 'Phantom Treasury — The Operating System for Generational Wealth',
   description:
-    'Portfolios, private investments, entities, tax, compliance, and family governance in one secure platform. Trusted by 200+ family offices.',
+    'Portfolio intelligence, deal pipeline, entity management, treasury operations, tax & compliance, and family governance in one secure platform. Built for family offices.',
 };
 
 export default function HomePage() {

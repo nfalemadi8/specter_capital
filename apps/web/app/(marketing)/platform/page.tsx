@@ -112,8 +112,14 @@ const modules = [
 
 export default function PlatformPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 hero-glow" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+      <div className="absolute top-40 right-[10%] w-80 h-80 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[60rem] left-[5%] w-96 h-96 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-24">
           <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
@@ -151,7 +157,7 @@ export default function PlatformPage() {
                 </div>
 
                 {/* Capabilities side */}
-                <div className={`glass-panel p-6 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className={`feature-card p-6 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <h3 className="text-xs font-semibold text-[#64748b] uppercase tracking-wider mb-4">
                     Key Capabilities
                   </h3>
@@ -183,8 +189,8 @@ export default function PlatformPage() {
             maps to your family office workflows.
           </p>
           <Link
-            href="/register"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all"
+            href="/signup"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
           >
             Request Early Access
             <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />

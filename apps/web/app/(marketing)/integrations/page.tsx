@@ -105,8 +105,14 @@ const integrationCategories = [
 
 export default function IntegrationsPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 hero-glow" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+      <div className="absolute top-60 left-[8%] w-72 h-72 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[50rem] right-[10%] w-80 h-80 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
@@ -136,7 +142,7 @@ export default function IntegrationsPage() {
                 {category.integrations.map((integration) => (
                   <div
                     key={integration.name}
-                    className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 p-5 flex flex-col hover:border-[#c9a55a]/20 transition-colors"
+                    className="feature-card p-5 flex flex-col"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -168,19 +174,25 @@ export default function IntegrationsPage() {
         </div>
 
         {/* API CTA */}
-        <div className="mt-20 rounded-xl border border-[#1e293b] bg-[#0f1423]/60 p-8 sm:p-12 text-center">
-          <h2 className="text-2xl font-bold text-[#e8e0d0] mb-3">Build Custom Integrations</h2>
-          <p className="text-[#8a919e] max-w-xl mx-auto mb-6">
-            Use the Phantom Treasury API to build custom integrations with any system.
-            Full REST API with webhooks, real-time subscriptions, and comprehensive documentation.
-          </p>
-          <Link
-            href="/signup"
-            className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-colors"
-          >
-            Get API Access
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+        <div className="mt-20 relative overflow-hidden rounded-2xl">
+          <div className="absolute inset-0 bg-[#0f1423]" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
+          <div className="absolute inset-0 rounded-2xl border border-[#1e293b]" />
+          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-[#c9a55a]/30 to-transparent" />
+          <div className="relative p-8 sm:p-12 text-center">
+            <h2 className="text-2xl font-bold text-[#e8e0d0] mb-3">Build Custom Integrations</h2>
+            <p className="text-[#8a919e] max-w-xl mx-auto mb-6">
+              Use the Phantom Treasury API to build custom integrations with any system.
+              Full REST API with webhooks, real-time subscriptions, and comprehensive documentation.
+            </p>
+            <Link
+              href="/signup"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-colors shadow-lg shadow-[#c9a55a]/15"
+            >
+              Get API Access
+              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

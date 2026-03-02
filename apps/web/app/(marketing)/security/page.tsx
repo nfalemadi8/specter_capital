@@ -90,8 +90,14 @@ const sections = [
 
 export default function SecurityPage() {
   return (
-    <div className="pt-32 pb-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 hero-glow" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
+      <div className="absolute top-40 left-[12%] w-80 h-80 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[50rem] right-[8%] w-96 h-96 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
@@ -112,7 +118,7 @@ export default function SecurityPage() {
           {sections.map((section) => (
             <div
               key={section.title}
-              className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 p-6 sm:p-8"
+              className="feature-card p-6 sm:p-8"
             >
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                 <div className="lg:col-span-3">
@@ -151,7 +157,7 @@ export default function SecurityPage() {
             {complianceItems.map((item) => (
               <div
                 key={item.label}
-                className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 p-5 hover:border-[#c9a55a]/20 transition-colors"
+                className="feature-card p-5"
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-semibold text-[#e8e0d0]">{item.label}</h3>
