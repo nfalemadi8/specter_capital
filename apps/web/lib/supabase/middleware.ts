@@ -1,6 +1,21 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
+// Marketing routes accessible without authentication
+const PUBLIC_ROUTES = [
+  '/',
+  '/pricing',
+  '/platform',
+  '/integrations',
+  '/security',
+  '/about',
+  '/faq',
+];
+
+function isPublicRoute(pathname: string) {
+  return PUBLIC_ROUTES.includes(pathname);
+}
+
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
@@ -35,8 +50,20 @@ export async function updateSession(request: NextRequest) {
       request.nextUrl.pathname.startsWith('/forgot-password'))
   ) {
     const url = request.nextUrl.clone();
-    url.pathname = '/';
+    url.pathname = '/dashboard';
     return NextResponse.redirect(url);
+  }
+
+  // Authenticated users on marketing homepage → redirect to dashboard
+  if (user && request.nextUrl.pathname === '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/dashboard';
+    return NextResponse.redirect(url);
+  }
+
+  // Allow public/marketing routes without auth
+  if (isPublicRoute(request.nextUrl.pathname)) {
+    return supabaseResponse;
   }
 
   // Protected routes — redirect to login if not authenticated
