@@ -5,6 +5,8 @@ import { Topbar } from '@/components/shell/topbar';
 import { CommandPalette } from '@/components/shell/command-palette';
 import { NotificationCenter } from '@/components/shell/notification-center';
 
+export const dynamic = 'force-dynamic';
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
