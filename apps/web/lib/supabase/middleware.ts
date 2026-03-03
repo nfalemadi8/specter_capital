@@ -1,17 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
-// Marketing routes accessible without authentication
-const PUBLIC_ROUTES = [
-  '/',
-  '/pricing',
-  '/platform',
-  '/integrations',
-  '/security',
-  '/about',
-  '/faq',
-];
-
 // Auth routes (accessible without authentication, redirect away if already authed)
 const AUTH_ROUTES = [
   '/login',
@@ -22,12 +11,12 @@ const AUTH_ROUTES = [
   '/accept-invite',
 ];
 
-function isPublicRoute(pathname: string) {
-  return PUBLIC_ROUTES.includes(pathname);
-}
-
 function isAuthRoute(pathname: string) {
   return AUTH_ROUTES.some((route) => pathname.startsWith(route));
+}
+
+function isDashboardRoute(pathname: string) {
+  return pathname.startsWith('/dashboard');
 }
 
 export async function updateSession(request: NextRequest) {
@@ -75,22 +64,12 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Allow public/marketing routes without auth
-  if (isPublicRoute(request.nextUrl.pathname)) {
+  // Only protect dashboard routes — all other routes are public
+  if (!isDashboardRoute(request.nextUrl.pathname)) {
     return supabaseResponse;
   }
 
-  // Allow auth routes without auth
-  if (isAuthRoute(request.nextUrl.pathname)) {
-    return supabaseResponse;
-  }
-
-  // Allow API routes
-  if (request.nextUrl.pathname.startsWith('/api/')) {
-    return supabaseResponse;
-  }
-
-  // Protected routes — redirect to signin if not authenticated
+  // Dashboard routes — redirect to signin if not authenticated
   if (!user) {
     const url = request.nextUrl.clone();
     url.pathname = '/signin';
