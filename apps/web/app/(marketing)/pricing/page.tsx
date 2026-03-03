@@ -2,119 +2,58 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Check, ArrowRight, ChevronDown } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
 
 const plans = [
   {
-    name: 'Foundation',
-    description: 'For single-family offices building operational infrastructure',
+    tier: 'Foundation',
     price: '$2,500',
-    period: '/month',
-    aum: 'Up to $250M AUM',
-    seats: '10 seats included',
-    cta: 'Request Access',
+    period: 'per month · billed annually',
     featured: false,
-    features: [
-      'Portfolio intelligence & analytics',
-      'Entity management (up to 20)',
-      'Treasury operations & bill pay',
-      'Document vault (100GB, E2E encrypted)',
-      'Tax dashboard & TLH scanner',
-      'Family governance basics',
-      'Email support (24h response)',
-      '3 integrations',
-    ],
+    features: ['Up to $500M AUM', '5 user seats', 'Consolidated dashboard', 'Quarterly reporting', 'Email support'],
+    cta: 'Get Started',
   },
   {
-    name: 'Enterprise',
-    description: 'For established family offices with complex multi-entity structures',
+    tier: 'Enterprise',
     price: '$5,000',
-    period: '/month',
-    aum: 'Up to $1B AUM',
-    seats: '25 seats included',
-    cta: 'Request Access',
+    period: 'per month · billed annually',
     featured: true,
-    features: [
-      'Everything in Foundation, plus:',
-      'Deal pipeline & PE/VC analytics',
-      'Real estate module',
-      'AI Copilot',
-      'Encrypted messaging',
-      'Unlimited entities',
-      'Document vault (1TB)',
-      'Priority support (4h response)',
-      'Unlimited integrations',
-      'Custom report builder',
-      'Dedicated Slack channel',
-    ],
+    features: ['Unlimited AUM', 'Unlimited seats', 'Entity management', 'API access + webhooks', 'Dedicated CSM', 'Custom integrations'],
+    cta: 'Request Access',
   },
   {
-    name: 'Sovereign',
-    description: 'For multi-family offices, institutions, and $1B+ single-family offices',
+    tier: 'Sovereign',
     price: 'Custom',
-    period: '',
-    aum: 'Unlimited AUM',
-    seats: 'Unlimited seats',
-    cta: 'Contact Us',
+    period: 'for multi-family offices',
     featured: false,
-    features: [
-      'Everything in Enterprise, plus:',
-      'White-label branding & custom domain',
-      'SSO / SAML authentication',
-      'Dedicated instance option',
-      'On-premise deployment',
-      '99.99% SLA guarantee',
-      'Dedicated account manager',
-      'Custom integrations & API access',
-      'Compliance & audit reporting',
-    ],
+    features: ['Everything in Enterprise', 'White-label deployment', 'On-premise option', 'SLA guarantees', '24/7 dedicated support'],
+    cta: 'Contact Us',
   },
 ];
 
 const faqs = [
-  {
-    q: 'Is there a trial period?',
-    a: 'Yes — 14 days of full access on any plan, no credit card required. Your data is preserved for 90 days if you choose not to continue.',
-  },
-  {
-    q: 'Can I change plans later?',
-    a: 'Upgrade instantly at any time with pro-rated charges. Downgrade at the end of your billing cycle. No penalties.',
-  },
-  {
-    q: 'Do you offer annual billing?',
-    a: 'Yes. Save 20% on Foundation and Enterprise plans with annual billing. Sovereign pricing is structured on a custom basis.',
-  },
-  {
-    q: 'What counts toward AUM limits?',
-    a: 'Total market value of all assets tracked in Phantom Treasury — equities, alternatives, real estate (appraised value), and cash. Private investments counted at last reported NAV.',
-  },
-  {
-    q: 'What happens if we exceed our AUM tier?',
-    a: 'We\'ll notify you and work together on a timeline to upgrade. No service interruption, no surprise charges.',
-  },
+  { q: 'What counts as AUM?', a: 'Total market value of all assets tracked in Phantom Treasury — equities, alternatives, real estate (appraised value), and cash. Private investments counted at last reported NAV.' },
+  { q: 'Can I switch plans?', a: 'Upgrade instantly at any time with pro-rated charges. Downgrade at the end of your billing cycle. No penalties.' },
+  { q: 'Is there a free trial?', a: 'Yes — 14 days of full access on any plan, no credit card required. Your data is preserved for 90 days if you choose not to continue.' },
+  { q: 'How does onboarding work?', a: 'Every client receives a dedicated onboarding specialist who maps your existing workflows to Phantom Treasury. Enterprise and Sovereign tiers include white-glove data migration.' },
+  { q: 'What integrations do you support?', a: 'We connect to major custodians (Schwab, Fidelity, Pershing), market data providers, and infrastructure tools. Enterprise plans include API access for custom integrations.' },
 ];
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-[#1e293b] last:border-0">
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left"
+        style={{ width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', padding: '20px 0', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}
       >
-        <span className="text-sm font-medium text-[#fafaf8]">{question}</span>
-        <ChevronDown
-          size={16}
-          className={cn(
-            'text-[#c8b88a] shrink-0 mt-0.5 transition-transform duration-200',
-            open && 'rotate-180'
-          )}
-        />
+        <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>{question}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8b88a" strokeWidth="2" style={{ flexShrink: 0, marginTop: '2px', transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </button>
       {open && (
-        <div className="pb-5 -mt-1">
-          <p className="text-sm text-[#8a919e] leading-relaxed">{answer}</p>
+        <div style={{ paddingBottom: '20px', marginTop: '-4px' }}>
+          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>{answer}</p>
         </div>
       )}
     </div>
@@ -123,103 +62,56 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function PricingPage() {
   return (
-    <div className="relative pt-32 pb-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 hero-glow" />
-      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-60 left-[10%] w-80 h-80 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
-      <div className="absolute top-[40rem] right-[5%] w-96 h-96 bg-[#c8b88a]/[0.02] rounded-full blur-3xl" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-xs font-semibold text-[#c8b88a] uppercase tracking-[0.2em] mb-4">
-            Planned Pricing
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
-            Transparent pricing,{' '}
-            <span className="gradient-text">no surprises</span>
-          </h1>
-          <p className="text-lg text-[#8a919e]">
-            No hidden fees, no long-term contracts. Start with a 14-day trial
-            and scale as your family office grows.
-          </p>
+    <div style={{ paddingTop: '160px', paddingBottom: '80px' }}>
+      <div className="reveal-up" style={{ maxWidth: '560px', margin: '0 auto 80px', textAlign: 'center', padding: '0 48px' }}>
+        <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '5px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+          Planned Pricing
         </div>
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 400, letterSpacing: '1px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
+          Aligned to Scale,<br />Not Complexity
+        </h1>
+        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+          No hidden fees, no long-term contracts. Pricing that scales with your family office.
+        </p>
+      </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={cn(
-                'relative feature-card p-8 flex flex-col',
-                plan.featured && 'ring-1 ring-[#c8b88a]/40 gold-glow'
-              )}
-            >
-              {plan.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 text-xs font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-full">
-                    Recommended
-                  </span>
-                </div>
-              )}
-
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-[#fafaf8] mb-1">{plan.name}</h3>
-                <p className="text-sm text-[#8a919e]">{plan.description}</p>
-              </div>
-
-              <div className="mb-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-[#fafaf8] font-mono">{plan.price}</span>
-                  {plan.period && <span className="text-sm text-[#64748b]">{plan.period}</span>}
-                </div>
-                <div className="text-xs text-[#64748b] mt-1">{plan.aum}</div>
-                <div className="text-xs text-[#64748b]">{plan.seats}</div>
-              </div>
-
-              <Link
-                href={plan.name === 'Sovereign' ? '/about' : '/signup'}
-                className={cn(
-                  'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg transition-all mb-8',
-                  plan.featured
-                    ? 'text-[#0a0a0a] bg-[#c8b88a] hover:bg-[#d4c596] shadow-lg shadow-[#c8b88a]/15'
-                    : 'text-[#fafaf8] border border-[#1e293b] hover:border-[#c8b88a]/30 hover:bg-white/[0.02]'
-                )}
-              >
-                {plan.cta}
-                <ArrowRight size={14} />
-              </Link>
-
-              <ul className="space-y-3 flex-1">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm">
-                    {i === 0 && plan.name !== 'Foundation' ? (
-                      <span className="text-[#8a919e] font-medium">{feature}</span>
-                    ) : (
-                      <>
-                        <Check size={16} className="text-[#c8b88a] mt-0.5 shrink-0" />
-                        <span className="text-[#8a919e]">{feature}</span>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* FAQ Accordion */}
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#fafaf8] text-center mb-8">
-            Pricing Questions
-          </h2>
-          <div className="rounded-xl border border-[#1e293b] bg-[#1a1a1a]/60 backdrop-blur-sm px-6">
-            {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.q} answer={faq.a} />
-            ))}
+      <div className="pricing-grid reveal-up stagger-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.03)', maxWidth: '1060px', margin: '0 auto 120px', padding: '0 48px' }}>
+        {plans.map((plan) => (
+          <div key={plan.tier} style={{ background: plan.featured ? 'rgba(200,184,138,0.02)' : '#0a0a0a', padding: '56px 40px', position: 'relative' }}>
+            {plan.featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, #c8b88a, rgba(200,184,138,0.3))' }} />}
+            <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: plan.featured ? '#c8b88a' : 'rgba(255,255,255,0.6)', marginBottom: '24px' }}>{plan.tier}</div>
+            <div style={{ fontSize: '44px', fontWeight: 200, color: 'rgba(255,255,255,0.9)', letterSpacing: '-1px', marginBottom: '4px' }}>{plan.price}</div>
+            <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginBottom: '36px' }}>{plan.period}</div>
+            <ul style={{ listStyle: 'none', marginBottom: '40px', padding: 0 }}>
+              {plan.features.map((f) => (
+                <li key={f} style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', padding: '9px 0', borderBottom: '1px solid rgba(255,255,255,0.02)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(200,184,138,0.2)', flexShrink: 0 }} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <Link href="/signup" style={{ display: 'block', width: '100%', padding: '15px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', textAlign: 'center', textDecoration: 'none', border: plan.featured ? '1px solid #c8b88a' : '1px solid rgba(255,255,255,0.06)', background: plan.featured ? '#c8b88a' : 'transparent', color: plan.featured ? '#0a0a0a' : 'rgba(255,255,255,0.6)' }}>
+              {plan.cta}
+            </Link>
           </div>
+        ))}
+      </div>
+
+      <div style={{ maxWidth: '640px', margin: '0 auto 120px', padding: '0 48px' }}>
+        <div className="reveal-up" style={{ marginBottom: '40px', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '28px', fontWeight: 400, color: 'rgba(255,255,255,0.9)' }}>Pricing Questions</h2>
         </div>
+        <div className="reveal-up stagger-1" style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.04)', padding: '0 32px' }}>
+          {faqs.map((faq, i) => <FAQItem key={i} question={faq.q} answer={faq.a} />)}
+        </div>
+      </div>
+
+      <div className="reveal-up" style={{ textAlign: 'center', padding: '0 48px' }}>
+        <Link href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#0a0a0a', background: '#c8b88a', padding: '18px 40px', textDecoration: 'none' }}>
+          Request Early Access
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </Link>
       </div>
     </div>
   );

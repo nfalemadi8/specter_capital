@@ -66,12 +66,12 @@ export default function DashboardPage() {
     <div className="space-y-8">
       {/* Welcome Header */}
       <div>
-        <h1 className="text-2xl font-bold text-[#e8e0d0]">
-          Welcome to <span className="text-[#c9a55a]">Phantom Treasury</span>
+        <h1 className="text-2xl font-bold text-[rgba(255,255,255,0.9)]">
+          Welcome to <span className="text-[#c8b88a]">Phantom Treasury</span>
         </h1>
         {userEmail && (
           <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">
-            Signed in as <span className="text-[#e8e0d0]">{userEmail}</span>
+            Signed in as <span className="text-[rgba(255,255,255,0.9)]">{userEmail}</span>
           </p>
         )}
       </div>
@@ -86,18 +86,18 @@ export default function DashboardPage() {
             <Link
               key={mod.href}
               href={mod.href}
-              className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[#c9a55a]/30 transition-colors"
+              className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[#c8b88a]/30 transition-colors"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[#c9a55a]/10 flex items-center justify-center">
-                  <mod.icon size={18} className="text-[#c9a55a]" />
+                <div className="w-9 h-9 rounded-lg bg-[#c8b88a]/10 flex items-center justify-center">
+                  <mod.icon size={18} className="text-[#c8b88a]" />
                 </div>
-                <h3 className="text-sm font-semibold text-[#e8e0d0]">{mod.title}</h3>
+                <h3 className="text-sm font-semibold text-[rgba(255,255,255,0.9)]">{mod.title}</h3>
               </div>
               <p className="text-xs text-[var(--color-muted-foreground)] leading-relaxed mb-3">
                 {mod.description}
               </p>
-              <span className="inline-flex items-center gap-1 text-xs text-[#c9a55a] group-hover:gap-1.5 transition-all">
+              <span className="inline-flex items-center gap-1 text-xs text-[#c8b88a] group-hover:gap-1.5 transition-all">
                 Open
                 <ArrowRight size={12} />
               </span>
@@ -123,7 +123,7 @@ export default function DashboardPage() {
               className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
             >
               <p className="text-xs text-[var(--color-muted-foreground)] mb-1">{stat.label}</p>
-              <p className="text-2xl font-bold text-[#e8e0d0] font-mono">{stat.value}</p>
+              <p className="text-2xl font-bold text-[rgba(255,255,255,0.9)] font-mono">{stat.value}</p>
               <p className="text-xs text-[var(--color-muted)] mt-1">{stat.sub}</p>
             </div>
           ))}

@@ -36,15 +36,11 @@ export function Sidebar() {
       <div className="flex h-16 items-center justify-between border-b border-[var(--color-border)] px-4">
         {!sidebarCollapsed && (
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="relative h-8 w-8">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#c9a55a] to-[#d4b876]" />
-              <div className="absolute inset-[2px] rounded-[6px] bg-[#0a0e17] flex items-center justify-center">
-                <span className="text-sm font-bold text-[#c9a55a] font-mono">P</span>
-              </div>
+            <div style={{ width: '28px', height: '28px', border: '1px solid #c8b88a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontFamily: "'EB Garamond', serif", fontSize: '12px', fontWeight: 400, color: '#c8b88a', letterSpacing: '1px' }}>PT</span>
             </div>
-            <span className="text-base font-semibold tracking-tight">
-              <span className="text-[#e8e0d0]">Phantom</span>{' '}
-              <span className="text-[#c9a55a]">Treasury</span>
+            <span style={{ fontFamily: "'EB Garamond', serif", fontSize: '14px', fontWeight: 400, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)' }}>
+              Phantom Treasury
             </span>
           </Link>
         )}
@@ -87,7 +83,7 @@ export function Sidebar() {
                         className={clsx(
                           'flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors',
                           isActive
-                            ? 'bg-[#c9a55a]/10 text-[#c9a55a]'
+                            ? 'bg-[#c8b88a]/10 text-[#c8b88a]'
                             : 'text-[var(--color-muted-foreground)] hover:bg-[var(--color-surface-hover)] hover:text-white'
                         )}
                         title={sidebarCollapsed ? item.label : undefined}

@@ -41,7 +41,7 @@ export default function SignInPage() {
 
   return (
     <AuthCard>
-      <form onSubmit={handleSignIn} className="space-y-6">
+      <form onSubmit={handleSignIn}>
         <AuthHeader
           title="Sign in to your account"
           subtitle="Welcome back. Enter your credentials below."
@@ -49,29 +49,27 @@ export default function SignInPage() {
 
         <AuthError message={error} />
 
-        <div className="space-y-4">
-          <AuthInput
-            id="email"
-            label="Email address"
-            type="email"
-            value={email}
-            onChange={setEmail}
-            placeholder="you@example.com"
-          />
-          <AuthInput
-            id="password"
-            label="Password"
-            type="password"
-            value={password}
-            onChange={setPassword}
-            placeholder="Enter your password"
-          />
-        </div>
+        <AuthInput
+          id="email"
+          label="Email address"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="you@example.com"
+        />
+        <AuthInput
+          id="password"
+          label="Password"
+          type="password"
+          value={password}
+          onChange={setPassword}
+          placeholder="Enter your password"
+        />
 
-        <div className="flex justify-end">
+        <div style={{ textAlign: 'right', marginBottom: '24px' }}>
           <Link
             href="/forgot-password"
-            className="text-sm text-[#8a919e] hover:text-[#c9a55a] transition-colors"
+            style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
           >
             Forgot password?
           </Link>
@@ -83,9 +81,9 @@ export default function SignInPage() {
           loadingLabel="Signing in..."
         />
 
-        <p className="text-center text-sm text-[#8a919e]">
+        <p style={{ textAlign: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '24px' }}>
           Don&apos;t have an account?{' '}
-          <Link href="/signup" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
+          <Link href="/signup" style={{ color: '#c8b88a', textDecoration: 'none' }}>
             Create one
           </Link>
         </p>

@@ -24,19 +24,19 @@
   --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
 
   /* Dashboard theme */
-  --color-background: #0a0e17;
-  --color-surface: #0f1423;
-  --color-surface-hover: #151b2e;
-  --color-border: #1e293b;
-  --color-primary: #22d3ee;
-  --color-primary-foreground: #0a0e17;
-  --color-accent: #a78bfa;
-  --color-accent-foreground: #0a0e17;
-  --color-success: #34d399;
-  --color-warning: #f59e0b;
-  --color-danger: #f87171;
-  --color-muted: #334155;
-  --color-muted-foreground: #94a3b8;
+  --color-background: #0a0a0a;
+  --color-surface: #1a1a1a;
+  --color-surface-hover: #2a2a2a;
+  --color-border: rgba(255,255,255,0.06);
+  --color-primary: #c8b88a;
+  --color-primary-foreground: #0a0a0a;
+  --color-accent: #c8b88a;
+  --color-accent-foreground: #0a0a0a;
+  --color-success: #4a9e6e;
+  --color-warning: #c89b4a;
+  --color-danger: #c45a5a;
+  --color-muted: rgba(255,255,255,0.15);
+  --color-muted-foreground: rgba(255,255,255,0.5);
   --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }

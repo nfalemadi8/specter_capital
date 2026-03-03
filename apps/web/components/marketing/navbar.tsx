@@ -115,10 +115,13 @@ export function Navbar() {
 
       {/* Desktop Nav */}
       <ul className="nav-links-desktop" style={{ display: 'flex', alignItems: 'center', gap: '36px', listStyle: 'none' }}>
-        <li><Link href="#features" className="nav-link">Platform</Link></li>
-        <li><Link href="#showcase" className="nav-link">Product</Link></li>
-        <li><Link href="#pricing" className="nav-link">Pricing</Link></li>
-        <li><Link href="#contact" className="btn-nav">Request Access</Link></li>
+        <li><Link href="/platform" className="nav-link">Platform</Link></li>
+        <li><Link href="/pricing" className="nav-link">Pricing</Link></li>
+        <li><Link href="/security" className="nav-link">Security</Link></li>
+        <li><Link href="/about" className="nav-link">About</Link></li>
+        <li><Link href="/faq" className="nav-link">FAQ</Link></li>
+        <li><Link href="/signin" className="nav-link">Sign In</Link></li>
+        <li><Link href="/signup" className="btn-nav">Request Access</Link></li>
       </ul>
 
       {/* Mobile toggle */}
@@ -133,10 +136,13 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="mobile-menu" style={{ display: 'block' }}>
-          <Link href="#features" onClick={() => setMobileOpen(false)}>Platform</Link>
-          <Link href="#showcase" onClick={() => setMobileOpen(false)}>Product</Link>
-          <Link href="#pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
-          <Link href="#contact" onClick={() => setMobileOpen(false)} style={{ color: '#c8b88a' }}>Request Access</Link>
+          <Link href="/platform" onClick={() => setMobileOpen(false)}>Platform</Link>
+          <Link href="/pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
+          <Link href="/security" onClick={() => setMobileOpen(false)}>Security</Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)}>About</Link>
+          <Link href="/faq" onClick={() => setMobileOpen(false)}>FAQ</Link>
+          <Link href="/signin" onClick={() => setMobileOpen(false)}>Sign In</Link>
+          <Link href="/signup" onClick={() => setMobileOpen(false)} style={{ color: '#c8b88a' }}>Request Access</Link>
         </div>
       )}
     </nav>

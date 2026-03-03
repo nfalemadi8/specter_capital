@@ -4,24 +4,20 @@ export const dynamic = 'force-dynamic';
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#0a0e17]">
-      {/* Subtle background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(201,165,90,0.06),transparent_70%)]" />
+    <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', background: '#0a0a0a' }}>
+      {/* Grain overlay */}
+      <div className="grain" />
 
-      <div className="relative w-full max-w-md space-y-8 px-4 py-12">
+      <div style={{ position: 'relative', width: '100%', maxWidth: '420px', padding: '48px 24px' }}>
         {/* PT Monogram + Wordmark */}
-        <div className="text-center">
-          <Link href="/" className="inline-flex flex-col items-center gap-4">
-            <div className="relative h-12 w-12">
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#c9a55a] to-[#d4b876]" />
-              <div className="absolute inset-[2px] rounded-[10px] bg-[#0a0e17] flex items-center justify-center">
-                <span className="text-lg font-bold text-[#c9a55a] font-mono">P</span>
-              </div>
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <Link href="/" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '16px', textDecoration: 'none' }}>
+            <div style={{ width: '36px', height: '36px', border: '1px solid #c8b88a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontFamily: "'EB Garamond', serif", fontSize: '16px', fontWeight: 400, color: '#c8b88a', letterSpacing: '2px' }}>PT</span>
             </div>
             <div>
-              <span className="text-xl font-semibold tracking-tight">
-                <span className="text-[#e8e0d0]">Phantom</span>{' '}
-                <span className="text-[#c9a55a]">Treasury</span>
+              <span style={{ fontFamily: "'EB Garamond', serif", fontSize: '18px', fontWeight: 400, letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)' }}>
+                Phantom Treasury
               </span>
             </div>
           </Link>

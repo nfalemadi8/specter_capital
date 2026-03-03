@@ -1,23 +1,13 @@
 'use client';
 
-import { Loader2 } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
-
 /* ─── AuthCard ─── */
 export function AuthCard({
   children,
-  className,
 }: {
   children: React.ReactNode;
-  className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        'rounded-xl border border-[#1e293b] bg-[#0f1423] p-8 space-y-6',
-        className
-      )}
-    >
+    <div style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.04)', padding: '40px 32px' }}>
       {children}
     </div>
   );
@@ -32,9 +22,9 @@ export function AuthHeader({
   subtitle: string;
 }) {
   return (
-    <div>
-      <h2 className="text-lg font-semibold text-[#e8e0d0]">{title}</h2>
-      <p className="mt-1 text-sm text-[#8a919e]">{subtitle}</p>
+    <div style={{ marginBottom: '32px' }}>
+      <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '24px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h2>
+      <p style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(255,255,255,0.5)' }}>{subtitle}</p>
     </div>
   );
 }
@@ -43,7 +33,7 @@ export function AuthHeader({
 export function AuthError({ message }: { message: string }) {
   if (!message) return null;
   return (
-    <div className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-sm text-red-400">
+    <div style={{ background: 'rgba(220,60,60,0.08)', border: '1px solid rgba(220,60,60,0.2)', padding: '12px 16px', fontSize: '13px', color: '#dc3c3c', marginBottom: '24px' }}>
       {message}
     </div>
   );
@@ -68,10 +58,10 @@ export function AuthInput({
   required?: boolean;
 }) {
   return (
-    <div>
+    <div style={{ marginBottom: '20px' }}>
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-[#8a919e] mb-1.5"
+        style={{ display: 'block', fontSize: '10px', fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '8px' }}
       >
         {label}
       </label>
@@ -81,8 +71,8 @@ export function AuthInput({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-[#1e293b] bg-[#0a0e17] px-4 py-2.5 text-[#e8e0d0] placeholder:text-[#334155] focus:border-[#c9a55a]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a55a]/25 transition-colors"
         placeholder={placeholder}
+        style={{ width: '100%', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', padding: '14px 16px', fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.9)', outline: 'none', boxSizing: 'border-box' }}
       />
     </div>
   );
@@ -102,11 +92,13 @@ export function AuthButton({
     <button
       type="submit"
       disabled={isLoading}
-      className="w-full rounded-lg bg-[#c9a55a] px-4 py-2.5 text-sm font-semibold text-[#0a0e17] hover:bg-[#d4b876] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+      style={{ width: '100%', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', background: '#c8b88a', color: '#0a0a0a', padding: '16px', border: 'none', cursor: isLoading ? 'not-allowed' : 'pointer', opacity: isLoading ? 0.6 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
     >
       {isLoading ? (
         <>
-          <Loader2 size={16} className="animate-spin" />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+            <path d="M21 12a9 9 0 11-6.219-8.56" />
+          </svg>
           {loadingLabel}
         </>
       ) : (
@@ -127,40 +119,22 @@ export function AuthSuccess({
   children: React.ReactNode;
 }) {
   return (
-    <AuthCard className="text-center !space-y-4">
-      <div className="w-12 h-12 rounded-full bg-[#c9a55a]/10 flex items-center justify-center mx-auto">
-        {icon === 'mail' ? (
-          <svg
-            className="w-6 h-6 text-[#c9a55a]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            />
-          </svg>
-        ) : (
-          <svg
-            className="w-6 h-6 text-[#c9a55a]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        )}
+    <AuthCard>
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ width: '48px', height: '48px', margin: '0 auto 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {icon === 'mail' ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8b88a" strokeWidth="1.2">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8b88a" strokeWidth="1.2">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </div>
+        <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '12px' }}>{title}</h2>
+        {children}
       </div>
-      <h2 className="text-lg font-semibold text-[#e8e0d0]">{title}</h2>
-      {children}
     </AuthCard>
   );
 }

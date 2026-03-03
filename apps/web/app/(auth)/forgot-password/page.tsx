@@ -40,14 +40,14 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <AuthSuccess icon="check" title="Check your email">
-        <p className="text-sm text-[#8a919e]">
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px' }}>
           If an account exists for{' '}
-          <strong className="text-[#e8e0d0]">{email}</strong>, you&apos;ll receive
+          <strong style={{ color: 'rgba(255,255,255,0.9)' }}>{email}</strong>, you&apos;ll receive
           a password reset link shortly.
         </p>
         <Link
           href="/signin"
-          className="inline-block text-sm text-[#c9a55a] hover:text-[#d4b876] transition-colors"
+          style={{ fontSize: '13px', color: '#c8b88a', textDecoration: 'none' }}
         >
           Back to sign in
         </Link>
@@ -57,10 +57,10 @@ export default function ForgotPasswordPage() {
 
   return (
     <AuthCard>
-      <form onSubmit={handleReset} className="space-y-6">
+      <form onSubmit={handleReset}>
         <AuthHeader
           title="Reset your password"
-          subtitle="Enter your email address and we'll send you a link to reset your password."
+          subtitle="Enter your email and we'll send you a reset link."
         />
 
         <AuthError message={error} />
@@ -80,8 +80,8 @@ export default function ForgotPasswordPage() {
           loadingLabel="Sending..."
         />
 
-        <p className="text-center text-sm text-[#8a919e]">
-          <Link href="/signin" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
+        <p style={{ textAlign: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '24px' }}>
+          <Link href="/signin" style={{ color: '#c8b88a', textDecoration: 'none' }}>
             Back to sign in
           </Link>
         </p>

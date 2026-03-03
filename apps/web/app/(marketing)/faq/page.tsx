@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
 
 const faqCategories = [
   {
@@ -21,10 +19,6 @@ const faqCategories = [
         q: 'How is Phantom Treasury different from wealth management software?',
         a: 'Traditional wealth management software focuses on portfolio tracking. Phantom Treasury is a complete operational platform that also handles deal pipeline, entity structures, treasury operations, tax optimization, family governance, encrypted communications, and more — all with the security and sophistication that family offices require.',
       },
-      {
-        q: 'Can Phantom Treasury replace our current tools?',
-        a: 'Yes. Most family offices come to us using 8-12 separate tools (Excel, QuickBooks, Dropbox, email, etc.). Phantom Treasury consolidates these into one platform. For tools you want to keep, we offer integrations to pull data in automatically.',
-      },
     ],
   },
   {
@@ -36,11 +30,11 @@ const faqCategories = [
       },
       {
         q: 'What integrations are available?',
-        a: 'Currently live: Plaid (12,000+ financial institutions), Interactive Brokers, Stripe, and Phantom Terminal for market data. Coming soon: Bloomberg, Schwab, Fidelity, QuickBooks, Xero, Slack, DocuSign, and Microsoft 365. Enterprise clients can also request custom integrations via our API.',
+        a: 'Currently live: CoinGecko, Open Exchange Rates, PDF generation, and Excel export. Coming soon: Bloomberg, Schwab, Fidelity, Pershing, DocuSign, and SharePoint. Enterprise plans include API access for custom integrations.',
       },
       {
         q: 'Does Phantom Treasury support multiple currencies?',
-        a: 'Yes. Phantom Treasury supports 8+ currencies (USD, EUR, GBP, SAR, AED, CHF, JPY, CNY) with automatic FX conversion. You can report in any currency and track FX exposure across your portfolio.',
+        a: 'Yes. Phantom Treasury supports 40+ currencies with automatic FX conversion. You can report in any currency and track FX exposure across your portfolio.',
       },
       {
         q: 'Is there an API?',
@@ -53,19 +47,15 @@ const faqCategories = [
     questions: [
       {
         q: 'How is our data protected?',
-        a: 'Phantom Treasury uses 256-bit end-to-end encryption for all sensitive data. Documents and messages are encrypted client-side before they leave your device using libsodium (X25519 + XSalsa20-Poly1305). Even Phantom Treasury employees cannot read your encrypted data. We are pursuing SOC 2 Type II certification and undergo annual penetration testing.',
+        a: 'Phantom Treasury uses AES-256 encryption at rest and TLS 1.3 for all data in transit. Documents and messages are encrypted client-side before transmission. Even Phantom Treasury employees cannot read your encrypted data. We are pursuing SOC 2 Type II certification and undergo annual penetration testing.',
       },
       {
         q: 'Is Phantom Treasury multi-tenant? Can other clients see our data?',
         a: 'Phantom Treasury uses PostgreSQL Row-Level Security (RLS) policies that enforce data isolation at the database level. Every query is automatically scoped to your tenant. Cross-tenant data access is architecturally impossible. Enterprise clients can also opt for a dedicated instance.',
       },
       {
-        q: 'Do you support SSO?',
-        a: 'Yes. Enterprise plans support SAML-based SSO with any identity provider (Okta, Azure AD, Google Workspace, etc.). We also support multi-factor authentication on all plans.',
-      },
-      {
         q: 'Where is our data stored?',
-        a: 'Data is stored on Supabase Cloud infrastructure (AWS) with automatic encrypted backups. Enterprise clients can choose their preferred region or opt for a self-hosted deployment using our Docker configuration.',
+        a: 'Data is stored on Supabase Cloud infrastructure with automatic encrypted backups. Enterprise clients can choose their preferred region or opt for a self-hosted deployment.',
       },
     ],
   },
@@ -74,19 +64,15 @@ const faqCategories = [
     questions: [
       {
         q: 'What are the pricing tiers?',
-        a: 'Foundation starts at $2,500/month for single-family offices. Enterprise is $5,000/month for multi-family offices with advanced features. Sovereign is custom-priced for institutions requiring dedicated infrastructure and SLA guarantees. All pricing is planned and subject to change during early access.',
+        a: 'Foundation starts at $2,500/month for up to $500M AUM and 5 user seats. Enterprise is $5,000/month with unlimited AUM and seats. Sovereign is custom-priced for multi-family offices requiring dedicated infrastructure and SLA guarantees. All pricing is billed annually.',
       },
       {
-        q: 'Is there an early access program?',
-        a: 'Yes. Phantom Treasury is currently onboarding a select group of family offices during our early access phase. Early access members receive dedicated onboarding support, priority feature requests, and preferred pricing when we launch publicly.',
+        q: 'Is there a free trial?',
+        a: 'Yes — 14 days of full access on any plan, no credit card required. Your data is preserved for 90 days if you choose not to continue.',
       },
       {
         q: 'Can I change plans later?',
-        a: 'Absolutely. Upgrade instantly at any time — your charges are pro-rated. Downgrade at the end of your current billing cycle. Enterprise and Sovereign plans are custom and can be structured annually or multi-year.',
-      },
-      {
-        q: 'Do you offer annual billing?',
-        a: 'Yes. Annual billing saves 20% on Foundation and Enterprise plans. Sovereign pricing is fully custom and can be structured as annual or multi-year agreements.',
+        a: 'Absolutely. Upgrade instantly at any time — your charges are pro-rated. Downgrade at the end of your current billing cycle. No penalties.',
       },
     ],
   },
@@ -94,25 +80,20 @@ const faqCategories = [
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
-
   return (
-    <div className="border-b border-[#1e293b] last:border-0">
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left"
+        style={{ width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', padding: '20px 0', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}
       >
-        <span className="text-sm font-medium text-[#fafaf8]">{question}</span>
-        <ChevronDown
-          size={16}
-          className={cn(
-            'text-[#c8b88a] shrink-0 mt-0.5 transition-transform',
-            open && 'rotate-180'
-          )}
-        />
+        <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>{question}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8b88a" strokeWidth="2" style={{ flexShrink: 0, marginTop: '2px', transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </button>
       {open && (
-        <div className="pb-5 -mt-1">
-          <p className="text-sm text-[#8a919e] leading-relaxed">{answer}</p>
+        <div style={{ paddingBottom: '20px', marginTop: '-4px' }}>
+          <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>{answer}</p>
         </div>
       )}
     </div>
@@ -121,64 +102,54 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQPage() {
   return (
-    <div className="relative pt-32 pb-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 hero-glow" />
-      <div className="absolute inset-0 grid-pattern opacity-[0.06]" />
-      <div className="absolute top-40 right-[12%] w-72 h-72 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
-
-      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c8b88a]" />
-            <span className="text-xs font-medium text-[#c8b88a]">FAQ</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
-            Frequently asked <span className="gradient-text">questions</span>
-          </h1>
-          <p className="text-lg text-[#8a919e]">
-            Everything you need to know about Phantom Treasury. Can&apos;t find what
-            you&apos;re looking for?{' '}
-            <Link href="/about" className="text-[#c8b88a] hover:text-[#d4c596] transition-colors">
-              Contact us
-            </Link>
-            .
-          </p>
+    <div style={{ paddingTop: '160px', paddingBottom: '80px' }}>
+      {/* Hero */}
+      <div className="reveal-up" style={{ maxWidth: '560px', margin: '0 auto 80px', textAlign: 'center', padding: '0 48px' }}>
+        <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '5px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+          FAQ
         </div>
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 400, letterSpacing: '1px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
+          Common Questions
+        </h1>
+        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+          Everything you need to know about Phantom Treasury.
+        </p>
+      </div>
 
-        {/* FAQ Categories */}
-        <div className="space-y-10">
-          {faqCategories.map((category) => (
-            <div key={category.category}>
-              <h2 className="text-lg font-bold text-[#fafaf8] mb-4">{category.category}</h2>
-              <div className="rounded-xl border border-[#1e293b] bg-[#1a1a1a]/60 px-6">
-                {category.questions.map((faq, i) => (
-                  <FAQItem key={i} question={faq.q} answer={faq.a} />
-                ))}
-              </div>
+      {/* FAQ Categories */}
+      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 48px' }}>
+        {faqCategories.map((category, ci) => (
+          <div key={category.category} className={`reveal-up ${ci > 0 ? 'stagger-1' : ''}`} style={{ marginBottom: '60px' }}>
+            <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px' }}>
+              {category.category}
             </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <p className="text-[#8a919e] mb-4">Still have questions?</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/about"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-lg hover:bg-[#d4c596] transition-all shadow-lg shadow-[#c8b88a]/15"
-            >
-              Talk to Us
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#fafaf8] border border-[#1e293b] rounded-lg hover:border-[#c8b88a]/30 hover:bg-white/[0.02] transition-all"
-            >
-              Request Early Access
-            </Link>
+            <div style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.04)', padding: '0 32px' }}>
+              {category.questions.map((faq, i) => (
+                <FAQItem key={i} question={faq.q} answer={faq.a} />
+              ))}
+            </div>
           </div>
+        ))}
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="reveal-up" style={{ textAlign: 'center', padding: '0 48px' }}>
+        <div style={{ width: '24px', height: '1px', background: 'rgba(200,184,138,0.15)', margin: '0 auto 40px' }} />
+        <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.85)', marginBottom: '16px' }}>
+          Still have questions?
+        </p>
+        <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
+          Reach out directly or request early access to see the platform firsthand.
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', flexWrap: 'wrap' }}>
+          <Link href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#0a0a0a', background: '#c8b88a', padding: '18px 40px', textDecoration: 'none' }}>
+            Request Early Access
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </Link>
+          <Link href="/about" style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', padding: '18px 24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            Contact Us
+          </Link>
         </div>
       </div>
     </div>

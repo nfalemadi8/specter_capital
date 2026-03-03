@@ -68,13 +68,13 @@ export default function SignUpPage() {
   if (success) {
     return (
       <AuthSuccess icon="mail" title="Check your email">
-        <p className="text-sm text-[#8a919e]">
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px' }}>
           We sent a confirmation link to{' '}
-          <strong className="text-[#e8e0d0]">{email}</strong>
+          <strong style={{ color: 'rgba(255,255,255,0.9)' }}>{email}</strong>
         </p>
         <Link
           href="/signin"
-          className="inline-block text-sm text-[#c9a55a] hover:text-[#d4b876] transition-colors"
+          style={{ fontSize: '13px', color: '#c8b88a', textDecoration: 'none' }}
         >
           Back to sign in
         </Link>
@@ -84,7 +84,7 @@ export default function SignUpPage() {
 
   return (
     <AuthCard>
-      <form onSubmit={handleSignUp} className="space-y-6">
+      <form onSubmit={handleSignUp}>
         <AuthHeader
           title="Create your account"
           subtitle="Request early access to Phantom Treasury."
@@ -92,39 +92,37 @@ export default function SignUpPage() {
 
         <AuthError message={error} />
 
-        <div className="space-y-4">
-          <AuthInput
-            id="fullName"
-            label="Full Name"
-            value={fullName}
-            onChange={setFullName}
-            placeholder="James Harrison"
-          />
-          <AuthInput
-            id="email"
-            label="Email address"
-            type="email"
-            value={email}
-            onChange={setEmail}
-            placeholder="you@example.com"
-          />
-          <AuthInput
-            id="password"
-            label="Password"
-            type="password"
-            value={password}
-            onChange={setPassword}
-            placeholder="Minimum 8 characters"
-          />
-          <AuthInput
-            id="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={setConfirmPassword}
-            placeholder="Confirm your password"
-          />
-        </div>
+        <AuthInput
+          id="fullName"
+          label="Full Name"
+          value={fullName}
+          onChange={setFullName}
+          placeholder="James Harrison"
+        />
+        <AuthInput
+          id="email"
+          label="Email address"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="you@example.com"
+        />
+        <AuthInput
+          id="password"
+          label="Password"
+          type="password"
+          value={password}
+          onChange={setPassword}
+          placeholder="Minimum 8 characters"
+        />
+        <AuthInput
+          id="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          value={confirmPassword}
+          onChange={setConfirmPassword}
+          placeholder="Confirm your password"
+        />
 
         <AuthButton
           isLoading={isLoading}
@@ -132,9 +130,9 @@ export default function SignUpPage() {
           loadingLabel="Creating account..."
         />
 
-        <p className="text-center text-sm text-[#8a919e]">
+        <p style={{ textAlign: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '24px' }}>
           Already have an account?{' '}
-          <Link href="/signin" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
+          <Link href="/signin" style={{ color: '#c8b88a', textDecoration: 'none' }}>
             Sign in
           </Link>
         </p>

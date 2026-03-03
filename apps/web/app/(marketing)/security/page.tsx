@@ -1,191 +1,71 @@
-import {
-  Shield,
-  Lock,
-  Users,
-  Eye,
-  FileCheck,
-} from 'lucide-react';
-
 export const metadata = {
   title: 'Security — Phantom Treasury',
-  description: 'Enterprise-grade security with E2E encryption, zero-knowledge architecture, and comprehensive audit trails.',
+  description: 'Your data. Your control. No exceptions.',
 };
-
-/* ─── Section 1: Architecture ─── */
-const architectureItems = [
-  'Vercel Edge Network with global CDN deployment',
-  'Supabase Cloud (AWS) with encrypted backups',
-  'PostgreSQL with Row-Level Security on every table',
-  'Tenant-scoped API middleware — no cross-tenant data leaks',
-  '99.99% uptime SLA on Enterprise plans',
-  'Optional self-hosted deployment via Docker',
-];
-
-/* ─── Section 2: Encryption ─── */
-const encryptionItems = [
-  'AES-256 encryption at rest for all stored data',
-  'TLS 1.3 for all data in transit',
-  'Client-side encryption using libsodium (X25519 + XSalsa20-Poly1305)',
-  'Per-document encryption keys with secure key exchange',
-  'Zero-knowledge architecture — Phantom Treasury cannot read your data',
-  'Automatic encrypted backups with configurable retention',
-];
-
-/* ─── Section 3: Access Control ─── */
-const accessControlItems = [
-  '9 predefined roles from Principal to Auditor',
-  'Per-user permission overrides at module and action level',
-  'SSO / SAML support for Enterprise (Okta, Azure AD, Google Workspace)',
-  'Multi-factor authentication (TOTP) on all plans',
-  'Invitation-based onboarding only — no open registration',
-  'IP allowlisting for Enterprise environments',
-];
-
-/* ─── Section 4: Privacy ─── */
-const privacyItems = [
-  'Every action logged with full context — who, what, when, where',
-  'Immutable audit logs for compliance and forensics',
-  'Exportable audit reports for regulatory review',
-  'Real-time anomaly detection on suspicious activity',
-  'Brute-force protection and session token rotation',
-  'Configurable data retention policies per tenant',
-];
-
-/* ─── Section 5: Compliance Roadmap ─── */
-const complianceItems = [
-  { label: 'SOC 2 Type II', status: 'In Progress', description: 'Annual independent audit of security controls' },
-  { label: 'GDPR', status: 'Compliant', description: 'EU data protection regulation compliance' },
-  { label: 'CCPA', status: 'Compliant', description: 'California Consumer Privacy Act compliance' },
-  { label: 'ISO 27001', status: 'Planned', description: 'Information security management certification' },
-  { label: 'Penetration Testing', status: 'Annual', description: 'Third-party penetration testing by independent firm' },
-  { label: 'Bug Bounty', status: 'Active', description: 'Vulnerability disclosure and reward program' },
-];
 
 const sections = [
   {
-    icon: Shield,
     title: 'Architecture',
-    description: 'Built on a modern, hardened infrastructure stack with multi-tenant isolation enforced at the database level — not the application level.',
-    items: architectureItems,
+    description: 'Built on Supabase + PostgreSQL with row-level security enforced at the database level. Multi-tenant isolation ensures every query is scoped to the authenticated user\'s organization. No cross-tenant access is architecturally possible.',
+    icon: <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, stroke: '#c8b88a', strokeWidth: 1.2, fill: 'none' }}><rect x="3" y="3" width="18" height="18" rx="1" /><path d="M3 9h18M9 21V9" /></svg>,
   },
   {
-    icon: Lock,
     title: 'Encryption',
-    description: 'End-to-end encryption for all sensitive data. Documents and messages are encrypted client-side before transmission. Even we cannot read your data.',
-    items: encryptionItems,
+    description: 'AES-256 encryption at rest for all stored data. TLS 1.3 for all data in transit. Database-level encryption with automatic key rotation. Documents and messages are encrypted client-side before transmission.',
+    icon: <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, stroke: '#c8b88a', strokeWidth: 1.2, fill: 'none' }}><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0110 0v4" /></svg>,
   },
   {
-    icon: Users,
     title: 'Access Control',
-    description: 'Granular role-based access with nine predefined roles, per-user overrides, and enterprise SSO. Every access decision is auditable.',
-    items: accessControlItems,
+    description: 'Role-based access control with four predefined roles: Owner, Admin, Analyst, and Viewer. Invite-only teams with session management, IP allowlisting, and per-user permission overrides.',
+    icon: <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, stroke: '#c8b88a', strokeWidth: 1.2, fill: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /></svg>,
   },
   {
-    icon: Eye,
-    title: 'Privacy & Audit',
-    description: 'Comprehensive audit trails, anomaly detection, and configurable retention policies. Every action in the platform is logged immutably.',
-    items: privacyItems,
+    title: 'Privacy',
+    description: 'Zero third-party analytics. No data reselling. No ad trackers. Every action logged with full context — who, what, when, where. Immutable audit logs for compliance and forensics, exportable for regulatory review.',
+    icon: <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, stroke: '#c8b88a', strokeWidth: 1.2, fill: 'none' }}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>,
+  },
+  {
+    title: 'Compliance Roadmap',
+    description: 'SOC 2 Type II certification planned. GDPR-ready architecture with configurable data retention. Data residency options available on Enterprise and Sovereign plans. Annual third-party penetration testing.',
+    icon: <svg viewBox="0 0 24 24" style={{ width: 24, height: 24, stroke: '#c8b88a', strokeWidth: 1.2, fill: 'none' }}><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><path d="M14 2v6h6M9 15l2 2 4-4" /></svg>,
   },
 ];
 
 export default function SecurityPage() {
   return (
-    <div className="relative pt-32 pb-20 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 hero-glow" />
-      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-40 left-[12%] w-80 h-80 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
-      <div className="absolute top-[50rem] right-[8%] w-96 h-96 bg-[#c8b88a]/[0.02] rounded-full blur-3xl" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5 mb-6">
-            <Shield size={14} className="text-[#c8b88a]" />
-            <span className="text-xs font-medium text-[#c8b88a]">Security-First Architecture</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
-            Security <span className="gradient-text">without compromise</span>
-          </h1>
-          <p className="text-lg text-[#8a919e]">
-            Your family&apos;s financial data demands the highest level of protection.
-            Phantom Treasury is built with security as a foundation, not an afterthought.
-          </p>
+    <div style={{ paddingTop: '160px', paddingBottom: '80px' }}>
+      {/* Hero */}
+      <div className="reveal-up" style={{ maxWidth: '560px', margin: '0 auto 100px', textAlign: 'center', padding: '0 48px' }}>
+        <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '5px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+          Security
         </div>
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 400, letterSpacing: '1px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
+          Your Data. Your Control.<br />No Exceptions.
+        </h1>
+        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+          Security is the foundation, not a feature. Zero-knowledge encryption, multi-tenant isolation, and complete audit trails.
+        </p>
+      </div>
 
-        {/* Security Sections */}
-        <div className="space-y-8 mb-20">
-          {sections.map((section) => (
-            <div
-              key={section.title}
-              className="feature-card p-6 sm:p-8"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                <div className="lg:col-span-3">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#c8b88a]/10 flex items-center justify-center">
-                      <section.icon size={20} className="text-[#c8b88a]" />
-                    </div>
-                    <h2 className="text-xl font-bold text-[#fafaf8]">{section.title}</h2>
-                  </div>
-                  <p className="text-[#8a919e] leading-relaxed">{section.description}</p>
-                </div>
-                <div className="lg:col-span-2">
-                  <ul className="space-y-2.5">
-                    {section.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2.5 text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#c8b88a] mt-1.5 shrink-0" />
-                        <span className="text-[#fafaf8]/80">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+      {/* Sections */}
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 48px' }}>
+        {sections.map((section, i) => (
+          <div key={section.title}>
+            {i > 0 && <div style={{ width: '24px', height: '1px', background: 'rgba(200,184,138,0.15)', margin: '60px 0' }} />}
+            <div className={`reveal-up ${i > 0 ? 'stagger-1' : ''}`}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                {section.icon}
+                <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '24px', fontWeight: 400, color: 'rgba(255,255,255,0.9)' }}>
+                  {section.title}
+                </h2>
               </div>
+              <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, paddingLeft: '40px' }}>
+                {section.description}
+              </p>
             </div>
-          ))}
-        </div>
-
-        {/* Compliance Roadmap */}
-        <div className="mb-20">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-lg bg-[#c8b88a]/10 flex items-center justify-center">
-              <FileCheck size={20} className="text-[#c8b88a]" />
-            </div>
-            <h2 className="text-2xl font-bold text-[#fafaf8]">Compliance Roadmap</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {complianceItems.map((item) => (
-              <div
-                key={item.label}
-                className="feature-card p-5"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-semibold text-[#fafaf8]">{item.label}</h3>
-                  <span className="px-2 py-0.5 text-xs rounded-full font-medium bg-[#c8b88a]/10 text-[#c8b88a]">
-                    {item.status}
-                  </span>
-                </div>
-                <p className="text-xs text-[#8a919e]">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="rounded-xl border border-[#1e293b] bg-[#1a1a1a]/60 p-8 sm:p-12 text-center">
-          <h2 className="text-2xl font-bold text-[#fafaf8] mb-8">Trusted by the Most Demanding Clients</h2>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {['SOC 2 Type II', 'E2E Encrypted', 'Zero-Knowledge', 'GDPR Compliant', 'Pen Tested'].map((badge) => (
-              <div
-                key={badge}
-                className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5"
-              >
-                <Shield size={14} className="text-[#c8b88a]" />
-                <span className="text-sm font-medium text-[#c8b88a]">{badge}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
