@@ -1,5 +1,26 @@
 import Link from 'next/link';
 
+const platformLinks = [
+  { label: 'Features', href: '/platform' },
+  { label: 'Security', href: '/security' },
+  { label: 'Integrations', href: '/integrations' },
+  { label: 'Changelog', href: '/changelog' },
+];
+
+const companyLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'Careers', href: '/careers' },
+  { label: 'Press', href: '/press' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Security', href: '/security' },
+  { label: 'Compliance', href: '/compliance' },
+];
+
 export function Footer() {
   return (
     <footer style={{ padding: '80px 48px', borderTop: '1px solid rgba(255,255,255,0.03)' }}>
@@ -52,10 +73,10 @@ export function Footer() {
           >
             Platform
           </h4>
-          {['Features', 'Security', 'Integrations', 'Changelog'].map((label) => (
+          {platformLinks.map((link) => (
             <Link
-              key={label}
-              href="#"
+              key={link.href + link.label}
+              href={link.href}
               style={{
                 display: 'block',
                 fontSize: '12px',
@@ -65,7 +86,7 @@ export function Footer() {
                 transition: 'color 0.15s',
               }}
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </div>
@@ -84,10 +105,10 @@ export function Footer() {
           >
             Company
           </h4>
-          {['About', 'Careers', 'Press', 'Contact'].map((label) => (
+          {companyLinks.map((link) => (
             <Link
-              key={label}
-              href="#"
+              key={link.href}
+              href={link.href}
               style={{
                 display: 'block',
                 fontSize: '12px',
@@ -97,7 +118,7 @@ export function Footer() {
                 transition: 'color 0.15s',
               }}
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </div>
@@ -116,10 +137,10 @@ export function Footer() {
           >
             Legal
           </h4>
-          {['Privacy Policy', 'Terms of Service', 'Security', 'Compliance'].map((label) => (
+          {legalLinks.map((link) => (
             <Link
-              key={label}
-              href="#"
+              key={link.href + link.label}
+              href={link.href}
               style={{
                 display: 'block',
                 fontSize: '12px',
@@ -129,7 +150,7 @@ export function Footer() {
                 transition: 'color 0.15s',
               }}
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </div>
@@ -149,32 +170,26 @@ export function Footer() {
           &copy; 2026 Phantom Treasury. All rights reserved.
         </div>
         <div style={{ display: 'flex', gap: '24px' }}>
-          <Link
-            href="#"
+          <span
             style={{
               color: 'rgba(255,255,255,0.6)',
               fontSize: '10px',
-              textDecoration: 'none',
               letterSpacing: '1px',
               textTransform: 'uppercase',
-              transition: 'color 0.15s',
             }}
           >
             LinkedIn
-          </Link>
-          <Link
-            href="#"
+          </span>
+          <span
             style={{
               color: 'rgba(255,255,255,0.6)',
               fontSize: '10px',
-              textDecoration: 'none',
               letterSpacing: '1px',
               textTransform: 'uppercase',
-              transition: 'color 0.15s',
             }}
           >
             Twitter
-          </Link>
+          </span>
         </div>
       </div>
     </footer>
