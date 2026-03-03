@@ -170,26 +170,34 @@ export function Footer() {
           &copy; 2026 Phantom Treasury. All rights reserved.
         </div>
         <div style={{ display: 'flex', gap: '24px' }}>
-          <span
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               color: 'rgba(255,255,255,0.6)',
               fontSize: '10px',
               letterSpacing: '1px',
               textTransform: 'uppercase',
+              textDecoration: 'none',
             }}
           >
             LinkedIn
-          </span>
-          <span
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               color: 'rgba(255,255,255,0.6)',
               fontSize: '10px',
               letterSpacing: '1px',
               textTransform: 'uppercase',
+              textDecoration: 'none',
             }}
           >
             Twitter
-          </span>
+          </a>
         </div>
       </div>
     </footer>
