@@ -66,15 +66,6 @@ export default function SignInPage() {
           placeholder="Enter your password"
         />
 
-        <div style={{ textAlign: 'right', marginBottom: '24px' }}>
-          <Link
-            href="/forgot-password"
-            style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
-          >
-            Forgot password?
-          </Link>
-        </div>
-
         <AuthButton
           isLoading={isLoading}
           label="Sign In"
@@ -84,7 +75,15 @@ export default function SignInPage() {
         <p style={{ textAlign: 'center', fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginTop: '24px' }}>
           Don&apos;t have an account?{' '}
           <Link href="/signup" style={{ color: '#c8b88a', textDecoration: 'none' }}>
-            Create one
+            Sign up
+          </Link>
+        </p>
+        <p style={{ textAlign: 'center', fontSize: '13px', marginTop: '12px' }}>
+          <Link
+            href="/forgot-password"
+            style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}
+          >
+            Forgot password?
           </Link>
         </p>
       </form>

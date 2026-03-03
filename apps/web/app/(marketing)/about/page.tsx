@@ -10,106 +10,75 @@ export default function AboutPage() {
     <div style={{ paddingTop: '160px', paddingBottom: '80px' }}>
       {/* Hero */}
       <div className="reveal-up" style={{ maxWidth: '640px', margin: '0 auto 100px', textAlign: 'center', padding: '0 48px' }}>
-        <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '5px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>
           About
         </div>
-        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 400, letterSpacing: '1px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
-          Built by Operators,<br />for Operators.
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 400, color: 'rgba(255,255,255,0.95)', lineHeight: 1.15 }}>
+          Built by Operators, for Operators
         </h1>
-        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-          The operating system for generational wealth — purpose-built for the families and offices that manage it.
-        </p>
       </div>
 
       {/* Editorial Sections */}
       <div style={{ maxWidth: '640px', margin: '0 auto', padding: '0 48px' }}>
         {/* The Problem */}
-        <div className="reveal-up">
-          <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '24px' }}>
+        <div className="reveal-up" style={{ marginBottom: '80px' }}>
+          <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '28px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '24px' }}>
             The Problem
-          </div>
-          <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginBottom: '20px' }}>
-            Family offices are the most sophisticated financial entities in the world — yet they run on the most fragmented infrastructure imaginable.
-          </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              Spreadsheets for portfolio tracking. Email threads for deal flow. Shared drives for documents. A patchwork of disconnected tools stitched together with manual processes, each one a potential point of failure.
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              Family offices are among the most sophisticated financial entities in the world — yet most still run on fragmented infrastructure. Holdings tracked in spreadsheets. Performance calculated manually. Reporting assembled from screenshots of custodian portals. Entity structures documented in filing cabinets.
             </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              The average family office uses 8 to 12 separate systems to manage their wealth. That fragmentation creates blind spots. Blind spots create risk. And for families managing generational wealth, risk isn&apos;t abstract — it&apos;s existential.
-            </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              No one has built a single, secure platform that treats the family office as what it actually is: a complex financial operating system that requires purpose-built software, not repurposed enterprise tools.
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              When a family&apos;s wealth spans listed equities, private equity, real estate, bonds, crypto, and alternative investments across multiple trusts, LLCs, and foundations — there is no single system that speaks that language.
             </p>
           </div>
         </div>
-
-        <div style={{ width: '24px', height: '1px', background: 'rgba(200,184,138,0.15)', margin: '60px 0' }} />
 
         {/* The Vision */}
-        <div className="reveal-up stagger-1">
-          <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '24px' }}>
+        <div className="reveal-up stagger-1" style={{ marginBottom: '80px' }}>
+          <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '28px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '24px' }}>
             The Vision
-          </div>
-          <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginBottom: '20px' }}>
-            Phantom Treasury is the unified platform that replaces the patchwork.
-          </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              Six integrated modules — Portfolio Intelligence, Deal Pipeline, Entity Management, Treasury Operations, Tax &amp; Compliance, and Family Governance — all running on one secure foundation with end-to-end encryption, row-level data isolation, and granular role-based access.
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              Phantom Treasury is a private operating system for family offices. One platform that consolidates every asset class, every entity, and every reporting need — with the discretion and precision that generational wealth demands.
             </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              We believe family offices deserve software built specifically for them. Not watered-down institutional tools. Not consumer apps with &ldquo;enterprise&rdquo; bolted on. Purpose-built infrastructure for the unique workflows, privacy requirements, and multi-generational perspective that define family office operations.
-            </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              Our goal is to give every family office — from the single-family office managing $50M to the multi-family firm overseeing billions — the technology that was previously only available to the largest institutions.
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              This isn&apos;t a retail portfolio tracker with a premium skin. It&apos;s purpose-built infrastructure for the specific complexity of family office operations.
             </p>
           </div>
         </div>
 
-        <div style={{ width: '24px', height: '1px', background: 'rgba(200,184,138,0.15)', margin: '60px 0' }} />
-
         {/* The Approach */}
-        <div className="reveal-up stagger-1">
-          <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '24px' }}>
+        <div className="reveal-up stagger-1" style={{ marginBottom: '80px' }}>
+          <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '28px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '24px' }}>
             The Approach
-          </div>
-          <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, marginBottom: '20px' }}>
-            We build with the hundred-year view.
-          </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              Every feature in Phantom Treasury exists because a family office needed it — not because a product manager imagined it. Our team includes former family office operators, wealth advisors, and institutional technologists who understand the nuances because they&apos;ve lived them.
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              We build with a modern, institutional-grade stack: React and Next.js for a responsive interface, Supabase and PostgreSQL for a secure and scalable backend, row-level security for true multi-tenant isolation, and role-based access control for granular permissions.
             </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              Security is not a feature — it&apos;s the foundation. Zero-knowledge encryption, SOC 2 Type II compliance, and multi-tenant isolation enforced at the database level, not the application level. We cannot read your data, even if we wanted to.
-            </p>
-            <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              We ship in the open. Our pricing is transparent. Our roadmap is shared with clients. We earn trust through consistency, not contracts.
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
+              Every architectural decision is made with one question: would a family office trust this with their most sensitive financial data?
             </p>
           </div>
         </div>
       </div>
 
       {/* CTA */}
-      <div className="reveal-up" style={{ textAlign: 'center', marginTop: '100px', padding: '0 48px' }}>
+      <div className="reveal-up" style={{ textAlign: 'center', padding: '0 48px' }}>
         <div style={{ width: '24px', height: '1px', background: 'rgba(200,184,138,0.15)', margin: '0 auto 40px' }} />
-        <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.85)', marginBottom: '12px' }}>
+        <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '24px', fontWeight: 400, color: 'rgba(255,255,255,0.85)', marginBottom: '16px' }}>
           Open for Early Access
         </p>
-        <p style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', marginBottom: '32px', maxWidth: '460px', margin: '0 auto 32px' }}>
-          Phantom Treasury is currently onboarding a select group of family offices. If you&apos;re interested, we&apos;d love to hear from you.
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.6)', marginBottom: '32px', maxWidth: '520px', margin: '0 auto 32px' }}>
+          Phantom Treasury is in private beta. If you manage a family office and are interested in consolidating your operations, we&apos;d like to hear from you.
         </p>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', flexWrap: 'wrap' }}>
-          <Link href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#0a0a0a', background: '#c8b88a', padding: '18px 40px', textDecoration: 'none' }}>
-            Request Access
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-          </Link>
-          <a href="mailto:hello@phantomtreasury.com" style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-            hello@phantomtreasury.com
-          </a>
-        </div>
+        <Link href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#0a0a0a', background: '#c8b88a', padding: '18px 40px', textDecoration: 'none' }}>
+          Request Access
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </Link>
       </div>
     </div>
   );

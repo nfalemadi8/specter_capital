@@ -41,9 +41,7 @@ export default function ForgotPasswordPage() {
     return (
       <AuthSuccess icon="check" title="Check your email">
         <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px' }}>
-          If an account exists for{' '}
-          <strong style={{ color: 'rgba(255,255,255,0.9)' }}>{email}</strong>, you&apos;ll receive
-          a password reset link shortly.
+          If an account exists with this email, you&apos;ll receive a password reset link.
         </p>
         <Link
           href="/signin"

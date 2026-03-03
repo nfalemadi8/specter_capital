@@ -3,52 +3,37 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
-import {
-  LineChart,
-  Briefcase,
-  Building2,
-  Landmark,
-  PieChart,
-  Shield,
-  ArrowRight,
-} from 'lucide-react';
 
-const modules = [
+const cards = [
   {
-    title: 'Portfolio Intelligence',
-    description: 'Multi-asset tracking, analytics, and real-time P&L across all accounts.',
-    icon: LineChart,
+    title: 'Portfolios',
+    description: 'Track and analyze all holdings across entities',
     href: '/portfolio',
   },
   {
-    title: 'Deal Pipeline',
-    description: 'PE/VC deal flow management with scoring, J-curve analytics, and exit modeling.',
-    icon: Briefcase,
-    href: '/deals',
-  },
-  {
-    title: 'Entity Management',
-    description: 'Interactive org charts, K-1 tracking, and compliance for all entities.',
-    icon: Building2,
+    title: 'Entities',
+    description: 'Manage trusts, LLCs, foundations, and holding companies',
     href: '/entities',
   },
   {
-    title: 'Treasury Operations',
-    description: 'Cash flow forecasting, wire workflows, and sweep account optimization.',
-    icon: Landmark,
+    title: 'Transactions',
+    description: 'Record and reconcile all financial activity',
     href: '/cash-flow',
   },
   {
-    title: 'Tax & Compliance',
-    description: 'Tax-loss harvesting, multi-state filing, and full audit trail.',
-    icon: PieChart,
-    href: '/tax',
+    title: 'Reports',
+    description: 'Generate board-ready performance reports',
+    href: '/reports',
   },
   {
-    title: 'Family Governance',
-    description: 'Constitution management, voting systems, and succession planning.',
-    icon: Shield,
-    href: '/governance',
+    title: 'Documents',
+    description: 'Store and organize compliance and legal documents',
+    href: '/documents',
+  },
+  {
+    title: 'Settings',
+    description: 'Configure your organization, team, and preferences',
+    href: '/settings',
   },
 ];
 
@@ -63,71 +48,61 @@ export default function DashboardPage() {
   }, [supabase]);
 
   return (
-    <div className="space-y-8">
+    <div style={{ maxWidth: '960px' }}>
       {/* Welcome Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-[rgba(255,255,255,0.9)]">
-          Welcome to <span className="text-[#c8b88a]">Phantom Treasury</span>
+      <div style={{ marginBottom: '48px' }}>
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: '32px', fontWeight: 400, color: 'rgba(255,255,255,0.95)', marginBottom: '8px' }}>
+          Welcome to Phantom Treasury
         </h1>
         {userEmail && (
-          <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">
-            Signed in as <span className="text-[rgba(255,255,255,0.9)]">{userEmail}</span>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.5)' }}>
+            {userEmail}
           </p>
         )}
       </div>
 
       {/* Module Cards */}
-      <div>
-        <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-4">
-          Modules
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {modules.map((mod) => (
-            <Link
-              key={mod.href}
-              href={mod.href}
-              className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 hover:border-[#c8b88a]/30 transition-colors"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[#c8b88a]/10 flex items-center justify-center">
-                  <mod.icon size={18} className="text-[#c8b88a]" />
-                </div>
-                <h3 className="text-sm font-semibold text-[rgba(255,255,255,0.9)]">{mod.title}</h3>
-              </div>
-              <p className="text-xs text-[var(--color-muted-foreground)] leading-relaxed mb-3">
-                {mod.description}
-              </p>
-              <span className="inline-flex items-center gap-1 text-xs text-[#c8b88a] group-hover:gap-1.5 transition-all">
-                Open
-                <ArrowRight size={12} />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        {cards.map((card) => (
+          <Link
+            key={card.title}
+            href={card.href}
+            style={{
+              background: '#1a1a1a',
+              border: '1px solid rgba(255,255,255,0.04)',
+              padding: '32px',
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'border-color 0.2s',
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(200,184,138,0.15)'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.04)'; }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <h3 style={{ fontFamily: "'EB Garamond', serif", fontSize: '20px', fontWeight: 400, color: 'rgba(255,255,255,0.95)' }}>
+                {card.title}
+              </h3>
+              <span style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '9px',
+                fontWeight: 500,
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                padding: '4px 10px',
+                borderRadius: '20px',
+                border: '1px solid rgba(200,184,138,0.3)',
+                color: '#c8b88a',
+                background: 'rgba(200,184,138,0.08)',
+                whiteSpace: 'nowrap',
+              }}>
+                Coming Soon
               </span>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Quick Stats Placeholder */}
-      <div>
-        <h2 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-4">
-          Overview
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { label: 'Total Net Worth', value: '--', sub: 'Connect accounts to populate' },
-            { label: 'Liquid Assets', value: '--', sub: 'Cash + public securities' },
-            { label: 'YTD Return', value: '--', sub: 'vs. benchmarks' },
-            { label: 'Pending Actions', value: '0', sub: 'Bills, approvals, filings' },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
-            >
-              <p className="text-xs text-[var(--color-muted-foreground)] mb-1">{stat.label}</p>
-              <p className="text-2xl font-bold text-[rgba(255,255,255,0.9)] font-mono">{stat.value}</p>
-              <p className="text-xs text-[var(--color-muted)] mt-1">{stat.sub}</p>
             </div>
-          ))}
-        </div>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
+              {card.description}
+            </p>
+          </Link>
+        ))}
       </div>
     </div>
   );

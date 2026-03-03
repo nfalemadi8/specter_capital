@@ -69,7 +69,7 @@ export default function SignUpPage() {
     return (
       <AuthSuccess icon="mail" title="Check your email">
         <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', marginBottom: '16px' }}>
-          We sent a confirmation link to{' '}
+          Check your email to confirm your account. We sent a confirmation link to{' '}
           <strong style={{ color: 'rgba(255,255,255,0.9)' }}>{email}</strong>
         </p>
         <Link

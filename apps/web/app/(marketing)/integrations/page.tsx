@@ -9,10 +9,10 @@ const categories = [
   {
     title: 'Custodians & Banks',
     integrations: [
-      { name: 'Schwab', type: 'API', status: 'coming' as const },
+      { name: 'Charles Schwab', type: 'API', status: 'coming' as const },
       { name: 'Fidelity', type: 'API', status: 'coming' as const },
-      { name: 'Pershing', type: 'SFTP', status: 'coming' as const },
-      { name: 'BNY Mellon', type: 'SFTP', status: 'coming' as const },
+      { name: 'Pershing (BNY)', type: 'SFTP', status: 'coming' as const },
+      { name: 'BNY Mellon', type: 'API', status: 'coming' as const },
       { name: 'Northern Trust', type: 'API', status: 'coming' as const },
       { name: 'Goldman Sachs', type: 'Manual', status: 'coming' as const },
     ],
@@ -20,9 +20,9 @@ const categories = [
   {
     title: 'Market Data',
     integrations: [
-      { name: 'CoinGecko', type: 'API', status: 'live' as const },
-      { name: 'Open Exchange Rates', type: 'API', status: 'live' as const },
-      { name: 'Bloomberg', type: 'API', status: 'coming' as const },
+      { name: 'CoinGecko', type: 'REST API', status: 'live' as const },
+      { name: 'Open Exchange Rates', type: 'REST API', status: 'live' as const },
+      { name: 'Bloomberg Terminal', type: 'API', status: 'coming' as const },
       { name: 'Refinitiv', type: 'API', status: 'coming' as const },
     ],
   },
@@ -38,9 +38,9 @@ const categories = [
   {
     title: 'Infrastructure',
     integrations: [
-      { name: 'Supabase / PostgreSQL', type: 'Database', status: 'live' as const },
+      { name: 'Supabase (PostgreSQL)', type: 'Database', status: 'live' as const },
       { name: 'Vercel', type: 'Hosting', status: 'live' as const },
-      { name: 'GitHub CI/CD', type: 'DevOps', status: 'live' as const },
+      { name: 'GitHub', type: 'CI/CD', status: 'live' as const },
     ],
   },
 ];
@@ -49,16 +49,15 @@ export default function IntegrationsPage() {
   return (
     <div style={{ paddingTop: '160px', paddingBottom: '80px' }}>
       {/* Hero */}
-      <div className="reveal-up" style={{ maxWidth: '560px', margin: '0 auto 80px', textAlign: 'center', padding: '0 48px' }}>
-        <div style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '5px', textTransform: 'uppercase', color: '#c8b88a', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+      <div className="reveal-up" style={{ maxWidth: '600px', margin: '0 auto 80px', textAlign: 'center', padding: '0 48px' }}>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>
           Integrations
         </div>
-        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 46px)', fontWeight: 400, letterSpacing: '1px', color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
-          Connects to the Infrastructure<br />You Already Trust
+        <h1 style={{ fontFamily: "'EB Garamond', serif", fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 400, color: 'rgba(255,255,255,0.95)', lineHeight: 1.15, marginBottom: '20px' }}>
+          Connects to the Infrastructure You Already Trust
         </h1>
-        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-          Aggregate data from custodians, market feeds, and tools your family office already uses.
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+          Phantom Treasury integrates with leading custodians, data providers, and financial infrastructure.
         </p>
       </div>
 
@@ -69,24 +68,27 @@ export default function IntegrationsPage() {
             <h2 style={{ fontFamily: "'EB Garamond', serif", fontSize: '24px', fontWeight: 400, color: 'rgba(255,255,255,0.9)', marginBottom: '32px' }}>
               {cat.title}
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '1px', background: 'rgba(255,255,255,0.03)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.03)' }}>
               {cat.integrations.map((integ) => (
-                <div key={integ.name} style={{ background: '#1a1a1a', padding: '28px 24px' }}>
+                <div key={integ.name} style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.04)', padding: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>{integ.name}</span>
+                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>{integ.name}</span>
                     <span style={{
+                      fontFamily: "'DM Sans', sans-serif",
                       fontSize: '9px',
                       fontWeight: 500,
                       letterSpacing: '1px',
-                      textTransform: 'uppercase',
+                      textTransform: 'uppercase' as const,
                       padding: '4px 10px',
-                      border: `1px solid ${integ.status === 'live' ? '#4a9e6e' : '#c8b88a'}`,
+                      borderRadius: '20px',
+                      border: `1px solid ${integ.status === 'live' ? 'rgba(74,158,110,0.3)' : 'rgba(200,184,138,0.3)'}`,
                       color: integ.status === 'live' ? '#4a9e6e' : '#c8b88a',
+                      background: integ.status === 'live' ? 'rgba(74,158,110,0.08)' : 'rgba(200,184,138,0.08)',
                     }}>
                       {integ.status === 'live' ? 'Live' : 'Coming Soon'}
                     </span>
                   </div>
-                  <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>{integ.type}</span>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>{integ.type}</span>
                 </div>
               ))}
             </div>
@@ -100,8 +102,8 @@ export default function IntegrationsPage() {
         <p style={{ fontFamily: "'EB Garamond', serif", fontSize: '22px', fontWeight: 400, color: 'rgba(255,255,255,0.85)', marginBottom: '16px' }}>
           Need a specific integration?
         </p>
-        <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
-          Tell us what you need. Enterprise plans include custom integration development.
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '14px', color: 'rgba(255,255,255,0.6)', marginBottom: '32px' }}>
+          Let us know what you need.
         </p>
         <Link href="/signup" style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#0a0a0a', background: '#c8b88a', padding: '18px 40px', textDecoration: 'none' }}>
           Request Access
