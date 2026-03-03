@@ -1,99 +1,180 @@
 import Link from 'next/link';
 
-const footerSections = [
-  {
-    title: 'Product',
-    links: [
-      { label: 'Platform', href: '/platform' },
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'Integrations', href: '/integrations' },
-      { label: 'Security', href: '/security' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', href: '/about' },
-      { label: 'Careers', href: '/about#careers' },
-      { label: 'Contact', href: '/about#contact' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Documentation', href: '/platform#docs' },
-      { label: 'API Reference', href: '/platform#api' },
-      { label: 'Status', href: '/security#status' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacy Policy', href: '/security#privacy' },
-      { label: 'Terms of Service', href: '/security#terms' },
-      { label: 'Compliance', href: '/security#compliance' },
-    ],
-  },
-];
-
 export function Footer() {
   return (
-    <footer className="border-t border-[#1e293b]/60 bg-[#0a0e17]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-4 lg:grid-cols-5">
-          {/* Brand Column */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="relative h-7 w-7">
-                <div className="absolute inset-0 rounded-md bg-gradient-to-br from-[#c9a55a] to-[#d4b876]" />
-                <div className="absolute inset-[2px] rounded-[4px] bg-[#0a0e17] flex items-center justify-center">
-                  <span className="text-xs font-bold text-[#c9a55a] font-mono">P</span>
-                </div>
-              </div>
-              <span className="text-sm font-semibold tracking-tight">
-                <span className="text-[#e8e0d0]">Phantom</span>{' '}
-                <span className="text-[#c9a55a]">Treasury</span>
-              </span>
-            </div>
-            <p className="text-sm text-[#8a919e] max-w-xs leading-relaxed">
-              Infrastructure for multi-generational wealth operations.
-            </p>
+    <footer style={{ padding: '80px 48px', borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+      {/* Footer Grid */}
+      <div
+        className="footer-grid-layout"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
+          gap: '60px',
+          marginBottom: '64px',
+        }}
+      >
+        {/* Brand */}
+        <div>
+          <div
+            style={{
+              fontFamily: "'EB Garamond', serif",
+              fontSize: '20px',
+              letterSpacing: '2px',
+              color: 'rgba(255,255,255,0.9)',
+              marginBottom: '14px',
+            }}
+          >
+            Phantom Treasury
           </div>
+          <div
+            style={{
+              fontSize: '12px',
+              color: 'rgba(255,255,255,0.75)',
+              lineHeight: 1.8,
+              maxWidth: '280px',
+            }}
+          >
+            Private wealth infrastructure for family offices that value discretion, precision, and institutional-grade control.
+          </div>
+        </div>
 
-          {/* Link Columns */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-xs font-semibold text-[#e8e0d0] uppercase tracking-wider mb-3">
-                {section.title}
-              </h3>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href + link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-[#8a919e] hover:text-[#c9a55a] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        {/* Platform */}
+        <div>
+          <h4
+            style={{
+              fontSize: '9px',
+              fontWeight: 500,
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.7)',
+              marginBottom: '16px',
+            }}
+          >
+            Platform
+          </h4>
+          {['Features', 'Security', 'Integrations', 'Changelog'].map((label) => (
+            <Link
+              key={label}
+              href="#"
+              style={{
+                display: 'block',
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.7)',
+                textDecoration: 'none',
+                padding: '5px 0',
+                transition: 'color 0.15s',
+              }}
+            >
+              {label}
+            </Link>
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="section-divider" />
-        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#64748b]">
-            &copy; {new Date().getFullYear()} Phantom Treasury. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <span className="text-xs text-[#64748b]">SOC 2 Type II</span>
-            <span className="text-xs text-[#64748b]">E2E Encrypted</span>
-            <span className="text-xs text-[#64748b]">Zero-Knowledge Architecture</span>
-          </div>
+        {/* Company */}
+        <div>
+          <h4
+            style={{
+              fontSize: '9px',
+              fontWeight: 500,
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.7)',
+              marginBottom: '16px',
+            }}
+          >
+            Company
+          </h4>
+          {['About', 'Careers', 'Press', 'Contact'].map((label) => (
+            <Link
+              key={label}
+              href="#"
+              style={{
+                display: 'block',
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.7)',
+                textDecoration: 'none',
+                padding: '5px 0',
+                transition: 'color 0.15s',
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Legal */}
+        <div>
+          <h4
+            style={{
+              fontSize: '9px',
+              fontWeight: 500,
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.7)',
+              marginBottom: '16px',
+            }}
+          >
+            Legal
+          </h4>
+          {['Privacy Policy', 'Terms of Service', 'Security', 'Compliance'].map((label) => (
+            <Link
+              key={label}
+              href="#"
+              style={{
+                display: 'block',
+                fontSize: '12px',
+                color: 'rgba(255,255,255,0.7)',
+                textDecoration: 'none',
+                padding: '5px 0',
+                transition: 'color 0.15s',
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingTop: '32px',
+          borderTop: '1px solid rgba(255,255,255,0.03)',
+        }}
+      >
+        <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.6)' }}>
+          &copy; 2026 Phantom Treasury. All rights reserved.
+        </div>
+        <div style={{ display: 'flex', gap: '24px' }}>
+          <Link
+            href="#"
+            style={{
+              color: 'rgba(255,255,255,0.6)',
+              fontSize: '10px',
+              textDecoration: 'none',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              transition: 'color 0.15s',
+            }}
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="#"
+            style={{
+              color: 'rgba(255,255,255,0.6)',
+              fontSize: '10px',
+              textDecoration: 'none',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              transition: 'color 0.15s',
+            }}
+          >
+            Twitter
+          </Link>
         </div>
       </div>
     </footer>

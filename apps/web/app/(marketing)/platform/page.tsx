@@ -116,16 +116,16 @@ export default function PlatformPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-glow" />
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-40 right-[10%] w-80 h-80 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
-      <div className="absolute top-[60rem] left-[5%] w-96 h-96 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+      <div className="absolute top-40 right-[10%] w-80 h-80 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[60rem] left-[5%] w-96 h-96 bg-[#c8b88a]/[0.02] rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-24">
-          <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
+          <p className="text-xs font-semibold text-[#c8b88a] uppercase tracking-[0.2em] mb-4">
             The Platform
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#e8e0d0] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
             Six Modules.{' '}
             <span className="gradient-text">One Operating System.</span>
           </h1>
@@ -145,14 +145,14 @@ export default function PlatformPage() {
                 {/* Text side */}
                 <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-sm font-mono text-[#c9a55a] font-semibold">
+                    <span className="text-sm font-mono text-[#c8b88a] font-semibold">
                       {mod.number}
                     </span>
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#c9a55a]/10">
-                      <mod.icon size={20} className="text-[#c9a55a]" />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#c8b88a]/10">
+                      <mod.icon size={20} className="text-[#c8b88a]" />
                     </div>
                   </div>
-                  <h2 className="text-2xl font-bold text-[#e8e0d0] mb-3">{mod.title}</h2>
+                  <h2 className="text-2xl font-bold text-[#fafaf8] mb-3">{mod.title}</h2>
                   <p className="text-[#8a919e] leading-relaxed">{mod.description}</p>
                 </div>
 
@@ -164,8 +164,8 @@ export default function PlatformPage() {
                   <ul className="space-y-3">
                     {mod.capabilities.map((cap, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-[#c9a55a]" />
-                        <span className="text-[#e8e0d0]">{cap}</span>
+                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-[#c8b88a]" />
+                        <span className="text-[#fafaf8]">{cap}</span>
                       </li>
                     ))}
                   </ul>
@@ -178,10 +178,10 @@ export default function PlatformPage() {
         {/* CTA */}
         <div className="text-center mt-24">
           <div className="section-divider mb-16" />
-          <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
+          <p className="text-xs font-semibold text-[#c8b88a] uppercase tracking-[0.2em] mb-4">
             Early Access
           </p>
-          <h2 className="text-2xl font-bold text-[#e8e0d0] mb-4">
+          <h2 className="text-2xl font-bold text-[#fafaf8] mb-4">
             See it in action
           </h2>
           <p className="text-[#8a919e] max-w-lg mx-auto mb-8">
@@ -190,7 +190,7 @@ export default function PlatformPage() {
           </p>
           <Link
             href="/signup"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-lg hover:bg-[#d4c596] transition-all shadow-lg shadow-[#c8b88a]/15"
           >
             Request Early Access
             <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />

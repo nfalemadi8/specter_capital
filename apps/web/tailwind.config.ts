@@ -29,10 +29,18 @@ const config: Config = {
           DEFAULT: 'var(--color-muted)',
           foreground: 'var(--color-muted-foreground)',
         },
+        phantom: {
+          black: '#0a0a0a',
+          charcoal: '#1a1a1a',
+          graphite: '#2a2a2a',
+          gold: '#c8b88a',
+        },
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+        display: ['EB Garamond', 'serif'],
+        body: ['DM Sans', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
         'fade-in': 'fade-in 0.2s ease-out',

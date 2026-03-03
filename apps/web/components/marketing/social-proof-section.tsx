@@ -1,69 +1,150 @@
-const metrics = [
-  { value: '$48B+', label: 'Assets Under Management' },
-  { value: '200+', label: 'Family Offices' },
-  { value: '99.99%', label: 'Uptime SLA' },
-  { value: '<50ms', label: 'API Latency' },
-];
-
 const testimonials = [
   {
     quote:
-      'Phantom Treasury replaced eight separate systems for us. Our operations team reclaimed 20 hours a week that was lost to manual reconciliation.',
-    role: 'Managing Director',
-    context: 'Multi-generational family office, $1.2B AUM',
+      'Replace fragmented spreadsheets and siloed custodial portals with a single, real-time view across every entity, account, and asset class your family office manages.',
+    author: 'Consolidation',
+    role: 'One dashboard for everything',
   },
   {
     quote:
-      'The deal pipeline with J-curve analytics completely changed how we evaluate private investments. The entity management alone justified the switch.',
-    role: 'Chief Investment Officer',
-    context: 'Single-family office, $800M AUM',
+      'Generate board-ready quarterly reports, capital call summaries, and performance attribution documents in minutes — not weeks. Every metric, every benchmark, automated.',
+    author: 'Reporting',
+    role: 'Institutional-grade, one click',
   },
   {
     quote:
-      'End-to-end encryption on documents and messaging was the deciding factor. Our principals trust Phantom with their most sensitive information.',
-    role: 'Head of Operations',
-    context: 'Multi-family office, $3.4B AUM',
+      'Your data never touches third-party analytics. No trackers, no reselling, no compromises. End-to-end encryption with hardware key support and complete audit trails.',
+    author: 'Privacy',
+    role: 'Zero third-party data sharing',
   },
 ];
 
 export function SocialProofSection() {
   return (
-    <section className="relative py-24">
-      <div className="section-divider mb-24" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Metrics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {metrics.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-[#c9a55a] font-mono mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-[#8a919e]">{stat.label}</div>
-            </div>
-          ))}
+    <section
+      className="phantom-section"
+      style={{
+        padding: '160px 0',
+        position: 'relative',
+        borderTop: '1px solid rgba(255,255,255,0.03)',
+      }}
+    >
+      {/* Section Header */}
+      <div
+        className="reveal-up"
+        style={{
+          maxWidth: '560px',
+          margin: '0 auto 80px',
+          textAlign: 'center',
+          padding: '0 48px',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '10px',
+            fontWeight: 500,
+            letterSpacing: '5px',
+            textTransform: 'uppercase',
+            color: '#c8b88a',
+            marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px',
+          }}
+        >
+          <span style={{ width: '20px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+          Why Phantom Treasury
         </div>
+        <h2
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: 'clamp(32px, 4vw, 46px)',
+            fontWeight: 400,
+            letterSpacing: '1px',
+            color: 'rgba(255,255,255,0.95)',
+            lineHeight: 1.15,
+          }}
+        >
+          Built for Principals,<br />Not Just Analysts
+        </h2>
+      </div>
 
-        {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div key={i} className="glass-panel p-6 flex flex-col">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, j) => (
-                  <svg key={j} className="w-3.5 h-3.5 text-[#c9a55a]" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <blockquote className="text-sm text-[#e8e0d0] leading-relaxed mb-4 flex-1">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <div className="border-t border-[#1e293b] pt-4">
-                <div className="text-sm font-medium text-[#e8e0d0]">{t.role}</div>
-                <div className="text-xs text-[#64748b]">{t.context}</div>
-              </div>
+      {/* Testimonials Grid */}
+      <div
+        className="testimonials-grid"
+        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}
+      >
+        {testimonials.map((t, i) => (
+          <div
+            key={i}
+            className={`testimonial-cell reveal-up ${i > 0 ? `stagger-${i}` : ''}`}
+            style={{
+              padding: '64px 48px',
+              borderRight: i < testimonials.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
+              transition: 'background 0.5s',
+            }}
+          >
+            {/* Opening quote mark */}
+            <span
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: '120px',
+                lineHeight: 0.6,
+                color: 'rgba(200,184,138,0.06)',
+                display: 'block',
+                marginBottom: '24px',
+              }}
+            >
+              &ldquo;
+            </span>
+
+            {/* Quote */}
+            <div
+              style={{
+                fontFamily: "'EB Garamond', serif",
+                fontSize: '19px',
+                fontStyle: 'italic',
+                color: 'rgba(255,255,255,0.7)',
+                lineHeight: 1.7,
+                marginBottom: '32px',
+              }}
+            >
+              {t.quote}
             </div>
-          ))}
-        </div>
+
+            {/* Divider */}
+            <div
+              style={{
+                width: '24px',
+                height: '1px',
+                background: 'rgba(200,184,138,0.15)',
+                marginBottom: '16px',
+              }}
+            />
+
+            {/* Author */}
+            <div
+              style={{
+                fontSize: '12px',
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.75)',
+                marginBottom: '2px',
+              }}
+            >
+              {t.author}
+            </div>
+            <div
+              style={{
+                fontSize: '10px',
+                color: 'rgba(255,255,255,0.55)',
+                letterSpacing: '1px',
+              }}
+            >
+              {t.role}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

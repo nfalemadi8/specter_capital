@@ -109,17 +109,17 @@ export default function IntegrationsPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-glow" />
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-60 left-[8%] w-72 h-72 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
-      <div className="absolute top-[50rem] right-[10%] w-80 h-80 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+      <div className="absolute top-60 left-[8%] w-72 h-72 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[50rem] right-[10%] w-80 h-80 bg-[#c8b88a]/[0.02] rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c9a55a]" />
-            <span className="text-xs font-medium text-[#c9a55a]">Integrations</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#c8b88a]" />
+            <span className="text-xs font-medium text-[#c8b88a]">Integrations</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#e8e0d0] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
             Connect <span className="gradient-text">everything</span>
           </h1>
           <p className="text-lg text-[#8a919e]">
@@ -134,7 +134,7 @@ export default function IntegrationsPage() {
           {integrationCategories.map((category) => (
             <div key={category.title}>
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-[#e8e0d0] mb-2">{category.title}</h2>
+                <h2 className="text-2xl font-bold text-[#fafaf8] mb-2">{category.title}</h2>
                 <p className="text-[#8a919e]">{category.description}</p>
               </div>
 
@@ -146,18 +146,18 @@ export default function IntegrationsPage() {
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#0a0e17] border border-[#1e293b] flex items-center justify-center">
-                          <span className="text-xs font-bold text-[#c9a55a] font-mono">
+                        <div className="w-10 h-10 rounded-lg bg-[#0a0a0a] border border-[#1e293b] flex items-center justify-center">
+                          <span className="text-xs font-bold text-[#c8b88a] font-mono">
                             {integration.name.slice(0, 2).toUpperCase()}
                           </span>
                         </div>
-                        <h3 className="text-sm font-semibold text-[#e8e0d0]">{integration.name}</h3>
+                        <h3 className="text-sm font-semibold text-[#fafaf8]">{integration.name}</h3>
                       </div>
                       <span
                         className={`px-2 py-0.5 text-xs rounded-full font-medium ${
                           integration.status === 'live'
                             ? 'bg-[#34d399]/10 text-[#34d399]'
-                            : 'bg-[#c9a55a]/10 text-[#c9a55a]'
+                            : 'bg-[#c8b88a]/10 text-[#c8b88a]'
                         }`}
                       >
                         {integration.status === 'live' ? 'Live' : 'Coming Soon'}
@@ -175,19 +175,19 @@ export default function IntegrationsPage() {
 
         {/* API CTA */}
         <div className="mt-20 relative overflow-hidden rounded-2xl">
-          <div className="absolute inset-0 bg-[#0f1423]" />
+          <div className="absolute inset-0 bg-[#1a1a1a]" />
           <div className="absolute inset-0 grid-pattern opacity-10" />
           <div className="absolute inset-0 rounded-2xl border border-[#1e293b]" />
-          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-[#c9a55a]/30 to-transparent" />
+          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-[#c8b88a]/30 to-transparent" />
           <div className="relative p-8 sm:p-12 text-center">
-            <h2 className="text-2xl font-bold text-[#e8e0d0] mb-3">Build Custom Integrations</h2>
+            <h2 className="text-2xl font-bold text-[#fafaf8] mb-3">Build Custom Integrations</h2>
             <p className="text-[#8a919e] max-w-xl mx-auto mb-6">
               Use the Phantom Treasury API to build custom integrations with any system.
               Full REST API with webhooks, real-time subscriptions, and comprehensive documentation.
             </p>
             <Link
               href="/signup"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-colors shadow-lg shadow-[#c9a55a]/15"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-lg hover:bg-[#d4c596] transition-colors shadow-lg shadow-[#c8b88a]/15"
             >
               Get API Access
               <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />

@@ -103,11 +103,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 py-5 text-left"
       >
-        <span className="text-sm font-medium text-[#e8e0d0]">{question}</span>
+        <span className="text-sm font-medium text-[#fafaf8]">{question}</span>
         <ChevronDown
           size={16}
           className={cn(
-            'text-[#c9a55a] shrink-0 mt-0.5 transition-transform duration-200',
+            'text-[#c8b88a] shrink-0 mt-0.5 transition-transform duration-200',
             open && 'rotate-180'
           )}
         />
@@ -127,16 +127,16 @@ export default function PricingPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-glow" />
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-60 left-[10%] w-80 h-80 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
-      <div className="absolute top-[40rem] right-[5%] w-96 h-96 bg-[#c9a55a]/[0.02] rounded-full blur-3xl" />
+      <div className="absolute top-60 left-[10%] w-80 h-80 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-[40rem] right-[5%] w-96 h-96 bg-[#c8b88a]/[0.02] rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
+          <p className="text-xs font-semibold text-[#c8b88a] uppercase tracking-[0.2em] mb-4">
             Planned Pricing
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#e8e0d0] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
             Transparent pricing,{' '}
             <span className="gradient-text">no surprises</span>
           </h1>
@@ -153,25 +153,25 @@ export default function PricingPage() {
               key={plan.name}
               className={cn(
                 'relative feature-card p-8 flex flex-col',
-                plan.featured && 'ring-1 ring-[#c9a55a]/40 gold-glow'
+                plan.featured && 'ring-1 ring-[#c8b88a]/40 gold-glow'
               )}
             >
               {plan.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 text-xs font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-full">
+                  <span className="px-3 py-1 text-xs font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-full">
                     Recommended
                   </span>
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="text-xl font-bold text-[#e8e0d0] mb-1">{plan.name}</h3>
+                <h3 className="text-xl font-bold text-[#fafaf8] mb-1">{plan.name}</h3>
                 <p className="text-sm text-[#8a919e]">{plan.description}</p>
               </div>
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-[#e8e0d0] font-mono">{plan.price}</span>
+                  <span className="text-4xl font-bold text-[#fafaf8] font-mono">{plan.price}</span>
                   {plan.period && <span className="text-sm text-[#64748b]">{plan.period}</span>}
                 </div>
                 <div className="text-xs text-[#64748b] mt-1">{plan.aum}</div>
@@ -183,8 +183,8 @@ export default function PricingPage() {
                 className={cn(
                   'inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg transition-all mb-8',
                   plan.featured
-                    ? 'text-[#0a0e17] bg-[#c9a55a] hover:bg-[#d4b876] shadow-lg shadow-[#c9a55a]/15'
-                    : 'text-[#e8e0d0] border border-[#1e293b] hover:border-[#c9a55a]/30 hover:bg-white/[0.02]'
+                    ? 'text-[#0a0a0a] bg-[#c8b88a] hover:bg-[#d4c596] shadow-lg shadow-[#c8b88a]/15'
+                    : 'text-[#fafaf8] border border-[#1e293b] hover:border-[#c8b88a]/30 hover:bg-white/[0.02]'
                 )}
               >
                 {plan.cta}
@@ -198,7 +198,7 @@ export default function PricingPage() {
                       <span className="text-[#8a919e] font-medium">{feature}</span>
                     ) : (
                       <>
-                        <Check size={16} className="text-[#c9a55a] mt-0.5 shrink-0" />
+                        <Check size={16} className="text-[#c8b88a] mt-0.5 shrink-0" />
                         <span className="text-[#8a919e]">{feature}</span>
                       </>
                     )}
@@ -211,10 +211,10 @@ export default function PricingPage() {
 
         {/* FAQ Accordion */}
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#e8e0d0] text-center mb-8">
+          <h2 className="text-2xl font-bold text-[#fafaf8] text-center mb-8">
             Pricing Questions
           </h2>
-          <div className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 backdrop-blur-sm px-6">
+          <div className="rounded-xl border border-[#1e293b] bg-[#1a1a1a]/60 backdrop-blur-sm px-6">
             {faqs.map((faq, i) => (
               <FAQItem key={i} question={faq.q} answer={faq.a} />
             ))}

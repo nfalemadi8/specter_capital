@@ -1,49 +1,116 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-
 export function CTASection() {
   return (
-    <section className="relative py-24">
-      <div className="section-divider mb-24" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl">
-          {/* Background */}
-          <div className="absolute inset-0 bg-[#0f1423]" />
-          <div className="absolute inset-0 grid-pattern opacity-10" />
-          <div className="absolute inset-0 rounded-2xl border border-[#1e293b]" />
-          <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-[#c9a55a]/30 to-transparent" />
+    <section
+      id="contact"
+      className="cta-section"
+      style={{
+        padding: '200px 48px',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Orb */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '700px',
+          height: '700px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(200,184,138,0.05) 0%, transparent 60%)',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+        }}
+      />
 
-          <div className="relative px-8 py-16 sm:px-16 sm:py-20 text-center">
-            <p className="text-xs font-semibold text-[#c9a55a] uppercase tracking-[0.2em] mb-4">
-              Early Access
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#e8e0d0] mb-4">
-              Built for the next hundred years
-            </h2>
-            <p className="text-lg text-[#8a919e] max-w-xl mx-auto mb-8">
-              Phantom Treasury is accepting a limited number of family offices
-              into our early access program. No contracts, no setup fees.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/signup"
-                className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
-              >
-                Request Early Access
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:border-[#c9a55a]/30 hover:bg-white/[0.02] transition-all"
-              >
-                View Pricing
-              </Link>
-            </div>
-            <p className="text-xs text-[#64748b] mt-6">
-              14-day trial. No credit card required. Cancel anytime.
-            </p>
-          </div>
-        </div>
+      <h2
+        className="reveal-up"
+        style={{
+          fontFamily: "'EB Garamond', serif",
+          fontSize: 'clamp(36px, 5vw, 58px)',
+          fontWeight: 400,
+          color: 'rgba(255,255,255,0.85)',
+          marginBottom: '16px',
+          position: 'relative',
+        }}
+      >
+        Request <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.6)' }}>Early Access</em>
+      </h2>
+
+      <p
+        className="reveal-up stagger-1"
+        style={{
+          fontSize: '15px',
+          fontWeight: 300,
+          color: 'rgba(255,255,255,0.6)',
+          maxWidth: '440px',
+          margin: '0 auto 48px',
+          lineHeight: 1.8,
+          position: 'relative',
+        }}
+      >
+        Phantom Treasury is currently in private beta. Leave your email and we&apos;ll reach out when access opens.
+      </p>
+
+      {/* Form */}
+      <div
+        className="cta-form reveal-up stagger-2"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 0,
+          position: 'relative',
+          maxWidth: '480px',
+          margin: '0 auto',
+        }}
+      >
+        <input
+          type="email"
+          className="cta-input"
+          placeholder="your@email.com"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '13px',
+            padding: '18px 24px',
+            flex: 1,
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRight: 'none',
+            color: '#fff',
+            outline: 'none',
+          }}
+        />
+        <button
+          className="cta-submit"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '10px',
+            fontWeight: 500,
+            letterSpacing: '3px',
+            textTransform: 'uppercase',
+            color: '#0a0a0a',
+            background: '#c8b88a',
+            padding: '18px 32px',
+            border: '1px solid #c8b88a',
+            cursor: 'pointer',
+          }}
+        >
+          Request
+        </button>
+      </div>
+
+      <div
+        className="reveal-up stagger-3"
+        style={{
+          fontSize: '10px',
+          color: 'rgba(255,255,255,0.45)',
+          marginTop: '16px',
+          position: 'relative',
+        }}
+      >
+        No spam. No data sharing. No exceptions.
       </div>
     </section>
   );

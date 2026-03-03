@@ -1,12 +1,16 @@
 import { Navbar } from '@/components/marketing/navbar';
 import { Footer } from '@/components/marketing/footer';
+import { ScrollAnimations } from '@/components/marketing/scroll-animations';
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <div className="grain" />
+      <div className="scroll-progress" id="scrollProgress" />
+      <ScrollAnimations />
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main>{children}</main>
       <Footer />
-    </div>
+    </>
   );
 }

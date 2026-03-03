@@ -12,16 +12,16 @@ export default function AboutPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-glow" />
       <div className="absolute inset-0 grid-pattern opacity-[0.06]" />
-      <div className="absolute top-60 right-[15%] w-72 h-72 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-60 right-[15%] w-72 h-72 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c9a55a]" />
-            <span className="text-xs font-medium text-[#c9a55a]">About Phantom Treasury</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#c8b88a]" />
+            <span className="text-xs font-medium text-[#c8b88a]">About Phantom Treasury</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#e8e0d0] leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] leading-tight">
             The operating system for{' '}
             <span className="gradient-text">generational wealth</span>
           </h1>
@@ -29,12 +29,12 @@ export default function AboutPage() {
 
         {/* ─── The Problem ─── */}
         <section className="mb-16">
-          <h2 className="text-sm font-semibold text-[#c9a55a] uppercase tracking-wider mb-4">
+          <h2 className="text-sm font-semibold text-[#c8b88a] uppercase tracking-wider mb-4">
             The Problem
           </h2>
           <div className="section-divider mb-8" />
           <div className="space-y-4 text-[#8a919e] leading-relaxed">
-            <p className="text-lg text-[#e8e0d0]">
+            <p className="text-lg text-[#fafaf8]">
               Family offices are the most sophisticated financial entities in the world —
               yet they run on the most fragmented infrastructure imaginable.
             </p>
@@ -58,12 +58,12 @@ export default function AboutPage() {
 
         {/* ─── The Vision ─── */}
         <section className="mb-16">
-          <h2 className="text-sm font-semibold text-[#c9a55a] uppercase tracking-wider mb-4">
+          <h2 className="text-sm font-semibold text-[#c8b88a] uppercase tracking-wider mb-4">
             The Vision
           </h2>
           <div className="section-divider mb-8" />
           <div className="space-y-4 text-[#8a919e] leading-relaxed">
-            <p className="text-lg text-[#e8e0d0]">
+            <p className="text-lg text-[#fafaf8]">
               Phantom Treasury is the unified platform that replaces the patchwork.
             </p>
             <p>
@@ -88,12 +88,12 @@ export default function AboutPage() {
 
         {/* ─── The Approach ─── */}
         <section className="mb-20">
-          <h2 className="text-sm font-semibold text-[#c9a55a] uppercase tracking-wider mb-4">
+          <h2 className="text-sm font-semibold text-[#c8b88a] uppercase tracking-wider mb-4">
             The Approach
           </h2>
           <div className="section-divider mb-8" />
           <div className="space-y-4 text-[#8a919e] leading-relaxed">
-            <p className="text-lg text-[#e8e0d0]">
+            <p className="text-lg text-[#fafaf8]">
               We build with the hundred-year view.
             </p>
             <p>
@@ -115,8 +115,8 @@ export default function AboutPage() {
         </section>
 
         {/* ─── Early Access CTA ─── */}
-        <div className="rounded-xl border border-[#c9a55a]/20 bg-[#c9a55a]/5 p-8 sm:p-10 text-center">
-          <h2 className="text-2xl font-bold text-[#e8e0d0] mb-3">
+        <div className="rounded-xl border border-[#c8b88a]/20 bg-[#c8b88a]/5 p-8 sm:p-10 text-center">
+          <h2 className="text-2xl font-bold text-[#fafaf8] mb-3">
             Request Early Access
           </h2>
           <p className="text-[#8a919e] max-w-lg mx-auto mb-6">
@@ -126,14 +126,14 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/signup"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-lg hover:bg-[#d4c596] transition-all shadow-lg shadow-[#c8b88a]/15"
             >
               Request Access
               <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <a
               href="mailto:hello@phantomtreasury.com"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:bg-white/5 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#fafaf8] border border-[#1e293b] rounded-lg hover:bg-white/5 transition-colors"
             >
               hello@phantomtreasury.com
             </a>

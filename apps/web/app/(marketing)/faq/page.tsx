@@ -101,11 +101,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 py-5 text-left"
       >
-        <span className="text-sm font-medium text-[#e8e0d0]">{question}</span>
+        <span className="text-sm font-medium text-[#fafaf8]">{question}</span>
         <ChevronDown
           size={16}
           className={cn(
-            'text-[#c9a55a] shrink-0 mt-0.5 transition-transform',
+            'text-[#c8b88a] shrink-0 mt-0.5 transition-transform',
             open && 'rotate-180'
           )}
         />
@@ -125,22 +125,22 @@ export default function FAQPage() {
       {/* Background Effects */}
       <div className="absolute inset-0 hero-glow" />
       <div className="absolute inset-0 grid-pattern opacity-[0.06]" />
-      <div className="absolute top-40 right-[12%] w-72 h-72 bg-[#c9a55a]/[0.03] rounded-full blur-3xl" />
+      <div className="absolute top-40 right-[12%] w-72 h-72 bg-[#c8b88a]/[0.03] rounded-full blur-3xl" />
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/5 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c9a55a]" />
-            <span className="text-xs font-medium text-[#c9a55a]">FAQ</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c8b88a]/20 bg-[#c8b88a]/5 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#c8b88a]" />
+            <span className="text-xs font-medium text-[#c8b88a]">FAQ</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#e8e0d0] mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#fafaf8] mb-4">
             Frequently asked <span className="gradient-text">questions</span>
           </h1>
           <p className="text-lg text-[#8a919e]">
             Everything you need to know about Phantom Treasury. Can&apos;t find what
             you&apos;re looking for?{' '}
-            <Link href="/about" className="text-[#c9a55a] hover:text-[#d4b876] transition-colors">
+            <Link href="/about" className="text-[#c8b88a] hover:text-[#d4c596] transition-colors">
               Contact us
             </Link>
             .
@@ -151,8 +151,8 @@ export default function FAQPage() {
         <div className="space-y-10">
           {faqCategories.map((category) => (
             <div key={category.category}>
-              <h2 className="text-lg font-bold text-[#e8e0d0] mb-4">{category.category}</h2>
-              <div className="rounded-xl border border-[#1e293b] bg-[#0f1423]/60 px-6">
+              <h2 className="text-lg font-bold text-[#fafaf8] mb-4">{category.category}</h2>
+              <div className="rounded-xl border border-[#1e293b] bg-[#1a1a1a]/60 px-6">
                 {category.questions.map((faq, i) => (
                   <FAQItem key={i} question={faq.q} answer={faq.a} />
                 ))}
@@ -167,14 +167,14 @@ export default function FAQPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/about"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
+              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c8b88a] rounded-lg hover:bg-[#d4c596] transition-all shadow-lg shadow-[#c8b88a]/15"
             >
               Talk to Us
               <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
             <Link
               href="/signup"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:border-[#c9a55a]/30 hover:bg-white/[0.02] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#fafaf8] border border-[#1e293b] rounded-lg hover:border-[#c8b88a]/30 hover:bg-white/[0.02] transition-all"
             >
               Request Early Access
             </Link>

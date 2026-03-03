@@ -1,152 +1,185 @@
 import Link from 'next/link';
-import { ArrowRight, Shield, Lock, Eye } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative pt-32 pb-24 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 hero-glow" />
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section
+      className="hero-section"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '0 48px',
+      }}
+    >
+      {/* Orb 1 */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '900px',
+          height: '900px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(200,184,138,0.06) 0%, rgba(200,184,138,0.02) 30%, transparent 70%)',
+          top: '-200px',
+          right: '-200px',
+          animation: 'orbFloat 20s ease-in-out infinite',
+          pointerEvents: 'none',
+        }}
+      />
+      {/* Orb 2 */}
+      <div
+        style={{
+          position: 'absolute',
+          width: '600px',
+          height: '600px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(90,142,196,0.03) 0%, transparent 70%)',
+          bottom: '-100px',
+          left: '-100px',
+          animation: 'orbFloat2 25s ease-in-out infinite',
+          pointerEvents: 'none',
+        }}
+      />
 
-      {/* Floating orbs */}
-      <div className="absolute top-40 left-[15%] w-72 h-72 bg-[#c9a55a]/[0.04] rounded-full blur-3xl animate-float" />
-      <div className="absolute top-60 right-[10%] w-96 h-96 bg-[#c9a55a]/[0.03] rounded-full blur-3xl animate-float-delayed" />
+      {/* Grid Lines */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '25%', width: '1px', background: 'rgba(255,255,255,0.02)' }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: '1px', background: 'rgba(255,255,255,0.02)' }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '75%', width: '1px', background: 'rgba(255,255,255,0.02)' }} />
+      </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a55a]/20 bg-[#c9a55a]/[0.06] mb-8">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#c9a55a] animate-glow-pulse" />
-            <span className="text-xs font-medium text-[#c9a55a]">
-              Private Beta &mdash; Accepting Select Family Offices
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-[#e8e0d0] tracking-tight leading-[1.08] mb-6">
-            The operating system for{' '}
-            <span className="gradient-text">generational wealth</span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-lg sm:text-xl text-[#8a919e] max-w-2xl mx-auto mb-10 leading-relaxed">
-            Phantom Treasury unifies portfolio intelligence, entity management,
-            deal flow, compliance, and family governance into a single
-            encrypted platform built for family offices.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link
-              href="/signup"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0e17] bg-[#c9a55a] rounded-lg hover:bg-[#d4b876] transition-all shadow-lg shadow-[#c9a55a]/15"
-            >
-              Request Early Access
-              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-            <Link
-              href="/platform"
-              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#e8e0d0] border border-[#1e293b] rounded-lg hover:border-[#c9a55a]/30 hover:bg-white/[0.02] transition-all"
-            >
-              Explore the Platform
-            </Link>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-xl mx-auto">
-            <div className="flex items-center justify-center gap-2.5 text-sm text-[#8a919e]">
-              <Shield size={15} className="text-[#c9a55a]" />
-              <span>SOC 2 Type II</span>
-            </div>
-            <div className="flex items-center justify-center gap-2.5 text-sm text-[#8a919e]">
-              <Lock size={15} className="text-[#c9a55a]" />
-              <span>E2E Encrypted</span>
-            </div>
-            <div className="flex items-center justify-center gap-2.5 text-sm text-[#8a919e]">
-              <Eye size={15} className="text-[#c9a55a]" />
-              <span>Zero-Knowledge</span>
-            </div>
-          </div>
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '800px' }}>
+        <div
+          className="reveal-up"
+          style={{
+            fontSize: '10px',
+            fontWeight: 500,
+            letterSpacing: '5px',
+            textTransform: 'uppercase' as const,
+            color: '#c8b88a',
+            marginBottom: '28px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+          }}
+        >
+          <span style={{ width: '32px', height: '1px', background: '#c8b88a', display: 'inline-block' }} />
+          Private Wealth Infrastructure
         </div>
 
-        {/* Dashboard Preview */}
-        <div className="mt-20 relative">
-          <div className="absolute -inset-4 bg-gradient-to-b from-[#c9a55a]/[0.06] via-transparent to-transparent rounded-2xl blur-xl" />
-          <div className="relative rounded-xl border border-[#1e293b] overflow-hidden bg-[#0a0e17]">
-            <div className="p-1">
-              <div className="bg-[#080c14] rounded-lg p-6">
-                {/* Window chrome */}
-                <div className="flex items-center gap-2 mb-5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#1e293b]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#1e293b]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#1e293b]" />
-                  <div className="ml-4 flex-1 h-5 bg-[#0f1423] rounded-md" />
-                </div>
+        <h1
+          className="reveal-up stagger-1"
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: 'clamp(48px, 7vw, 86px)',
+            fontWeight: 400,
+            letterSpacing: '1px',
+            lineHeight: 1.02,
+            color: '#fff',
+            marginBottom: '32px',
+          }}
+        >
+          The Quiet Architecture<br />
+          of <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.65)' }}>Generational Wealth</em>
+        </h1>
 
-                {/* Stat cards */}
-                <div className="grid grid-cols-4 gap-3 mb-4">
-                  {[
-                    { label: 'Net Worth', value: '$2.4B', change: '+8.2%' },
-                    { label: 'Liquid Assets', value: '$840M', change: '' },
-                    { label: 'Private Equity', value: '$620M', change: '+14.1%' },
-                    { label: 'Real Estate', value: '$380M', change: '+3.7%' },
-                  ].map((stat, i) => (
-                    <div key={i} className="bg-[#0f1423] border border-[#1e293b]/60 rounded-lg p-4">
-                      <div className="text-[10px] text-[#64748b] mb-1 uppercase tracking-wider">
-                        {stat.label}
-                      </div>
-                      <div className="text-lg font-bold text-[#e8e0d0] font-mono">{stat.value}</div>
-                      {stat.change && (
-                        <div className="text-[10px] text-[#c9a55a] font-mono mt-0.5">{stat.change}</div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+        <p
+          className="reveal-up stagger-2"
+          style={{
+            fontSize: '16px',
+            fontWeight: 300,
+            color: 'rgba(255,255,255,0.7)',
+            maxWidth: '480px',
+            lineHeight: 1.8,
+            marginBottom: '52px',
+          }}
+        >
+          A private operating system for family offices. Consolidate complex holdings,
+          automate institutional-grade reporting, and govern multi-entity structures
+          — with the discretion they demand.
+        </p>
 
-                {/* Chart area */}
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="col-span-2 bg-[#0f1423] border border-[#1e293b]/60 rounded-lg p-4 h-44">
-                    <div className="text-[10px] text-[#64748b] uppercase tracking-wider mb-3">
-                      Portfolio Performance — 12M
-                    </div>
-                    <div className="flex items-end gap-[3px] h-28">
-                      {[35, 42, 38, 55, 48, 62, 56, 70, 64, 75, 68, 82, 76, 88, 84, 92, 88, 95].map(
-                        (h, i) => (
-                          <div
-                            key={i}
-                            className="flex-1 rounded-t"
-                            style={{
-                              height: `${h}%`,
-                              backgroundColor: '#c9a55a',
-                              opacity: 0.3 + (i / 18) * 0.7,
-                            }}
-                          />
-                        )
-                      )}
-                    </div>
-                  </div>
-                  <div className="bg-[#0f1423] border border-[#1e293b]/60 rounded-lg p-4 h-44">
-                    <div className="text-[10px] text-[#64748b] uppercase tracking-wider mb-3">
-                      Allocation
-                    </div>
-                    <div className="flex items-center justify-center h-28">
-                      <div className="relative w-24 h-24">
-                        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                          <circle cx="50" cy="50" r="40" fill="none" stroke="#1e293b" strokeWidth="8" />
-                          <circle cx="50" cy="50" r="40" fill="none" stroke="#c9a55a" strokeWidth="8"
-                            strokeDasharray="100 151" strokeLinecap="round" />
-                          <circle cx="50" cy="50" r="40" fill="none" stroke="#8a919e" strokeWidth="8"
-                            strokeDasharray="60 191" strokeDashoffset="-100" strokeLinecap="round" />
-                          <circle cx="50" cy="50" r="40" fill="none" stroke="#e8e0d0" strokeWidth="8"
-                            strokeDasharray="40 211" strokeDashoffset="-160" strokeLinecap="round" opacity="0.4" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="hero-actions reveal-up stagger-3" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <Link
+            href="#contact"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '3px',
+              textTransform: 'uppercase' as const,
+              color: '#0a0a0a',
+              background: '#c8b88a',
+              padding: '18px 40px',
+              border: 'none',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              position: 'relative' as const,
+              overflow: 'hidden' as const,
+              transition: 'transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1)',
+            }}
+          >
+            Request Early Access
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <Link
+            href="#showcase"
+            style={{
+              fontSize: '12px',
+              color: 'rgba(255,255,255,0.55)',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'color 0.15s',
+            }}
+          >
+            See the Platform
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '48px',
+          left: '48px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          zIndex: 2,
+        }}
+      >
+        <div
+          style={{
+            width: '1px',
+            height: '48px',
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.15), transparent)',
+            animation: 'scrollPulse 2s ease-in-out infinite',
+          }}
+        />
+        <div
+          style={{
+            fontSize: '8px',
+            letterSpacing: '3px',
+            textTransform: 'uppercase' as const,
+            color: 'rgba(255,255,255,0.1)',
+            writingMode: 'vertical-rl' as const,
+          }}
+        >
+          Scroll
         </div>
       </div>
     </section>
