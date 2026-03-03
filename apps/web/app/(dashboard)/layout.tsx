@@ -20,7 +20,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Topbar />
           </Suspense>
 
-          <main className="flex-1 overflow-y-auto p-6">{children}</main>
+          <main id="main-content" className="flex-1 overflow-y-auto p-6">{children}</main>
         </div>
 
         <Suspense fallback={null}>

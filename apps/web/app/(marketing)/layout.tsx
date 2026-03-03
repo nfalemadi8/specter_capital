@@ -9,7 +9,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <div className="scroll-progress" id="scrollProgress" />
       <ScrollAnimations />
       <Navbar />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
     </>
   );

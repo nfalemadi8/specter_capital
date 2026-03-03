@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: #c8b88a;
+  color: #0a0a0a;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  left: 0;
+}
+
 :root {
   --phantom-black: #0a0a0a;
   --phantom-white: #fafaf8;

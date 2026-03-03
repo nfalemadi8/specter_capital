@@ -61,7 +61,7 @@ export function Footer() {
 
         {/* Platform */}
         <div>
-          <h4
+          <p
             style={{
               fontSize: '9px',
               fontWeight: 500,
@@ -72,7 +72,7 @@ export function Footer() {
             }}
           >
             Platform
-          </h4>
+          </p>
           {platformLinks.map((link) => (
             <Link
               key={link.href + link.label}
@@ -93,7 +93,7 @@ export function Footer() {
 
         {/* Company */}
         <div>
-          <h4
+          <p
             style={{
               fontSize: '9px',
               fontWeight: 500,
@@ -104,7 +104,7 @@ export function Footer() {
             }}
           >
             Company
-          </h4>
+          </p>
           {companyLinks.map((link) => (
             <Link
               key={link.href}
@@ -125,7 +125,7 @@ export function Footer() {
 
         {/* Legal */}
         <div>
-          <h4
+          <p
             style={{
               fontSize: '9px',
               fontWeight: 500,
@@ -136,7 +136,7 @@ export function Footer() {
             }}
           >
             Legal
-          </h4>
+          </p>
           {legalLinks.map((link) => (
             <Link
               key={link.href + link.label}

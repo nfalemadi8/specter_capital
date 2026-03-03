@@ -128,6 +128,7 @@ export function Navbar() {
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="md:hidden"
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         style={{ display: 'none', background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', cursor: 'pointer' }}
       >
         {mobileOpen ? <X size={20} /> : <Menu size={20} />}
