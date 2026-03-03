@@ -32,8 +32,12 @@ export default function SignInPage() {
       if (error) throw error;
       router.push(redirect);
       router.refresh();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign in failed');
+    } catch (err: unknown) {
+      if (err && typeof err === 'object' && 'status' in err && (err as { status: number }).status === 429) {
+        setError('Too many attempts. Please wait a moment and try again.');
+      } else {
+        setError(err instanceof Error ? err.message : 'Sign in failed');
+      }
     } finally {
       setIsLoading(false);
     }

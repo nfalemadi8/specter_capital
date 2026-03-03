@@ -30,8 +30,12 @@ export default function ForgotPasswordPage() {
       });
       if (error) throw error;
       setSent(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send reset email');
+    } catch (err: unknown) {
+      if (err && typeof err === 'object' && 'status' in err && (err as { status: number }).status === 429) {
+        setError('Too many attempts. Please wait a moment and try again.');
+      } else {
+        setError(err instanceof Error ? err.message : 'Failed to send reset email');
+      }
     } finally {
       setIsLoading(false);
     }
