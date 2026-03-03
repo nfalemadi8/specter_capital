@@ -2,9 +2,30 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Phantom Treasury — Private Wealth Infrastructure',
+  metadataBase: new URL('https://phantomtreasury.com'),
+  title: {
+    default: 'Phantom Treasury — Private Wealth Infrastructure',
+    template: '%s — Phantom Treasury',
+  },
   description:
     'A private operating system for family offices. Consolidate complex holdings, automate institutional-grade reporting, and govern multi-entity structures.',
+  icons: {
+    icon: '/favicon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Phantom Treasury',
+    title: 'Phantom Treasury — Private Wealth Infrastructure',
+    description:
+      'A private operating system for family offices. Consolidate complex holdings, automate institutional-grade reporting, and govern multi-entity structures.',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Phantom Treasury — Private Wealth Infrastructure',
+    description:
+      'A private operating system for family offices. Consolidate complex holdings, automate institutional-grade reporting, and govern multi-entity structures.',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
