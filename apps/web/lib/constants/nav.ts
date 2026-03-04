@@ -65,14 +65,14 @@ export const NAV_SECTIONS: NavSection[] = [
     title: 'Communication',
     items: [
       { label: 'Documents', href: '/documents', icon: 'FolderLock', module: 'documents' },
-      { label: 'Messaging', href: '/messaging', icon: 'MessageSquare', module: 'messaging' },
-      { label: 'AI Copilot', href: '/ai-copilot', icon: 'Sparkles', module: 'ai_copilot' },
+      { label: 'Messaging', href: '/messages', icon: 'MessageSquare', module: 'messaging' },
+      { label: 'AI Copilot', href: '/ai', icon: 'Sparkles', module: 'ai_copilot' },
     ],
   },
   {
     title: 'Admin',
     items: [
-      { label: 'Integrations', href: '/integrations', icon: 'Plug', module: 'integrations' },
+      { label: 'Integrations', href: '/settings/integrations', icon: 'Plug', module: 'integrations' },
       { label: 'Settings', href: '/settings', icon: 'Settings', module: 'settings' },
     ],
   },

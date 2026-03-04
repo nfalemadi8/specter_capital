@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, Download, Calendar, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
+import { FileText, Download, Calendar, BarChart3, Wrench } from 'lucide-react';
 import { clsx } from 'clsx';
 
 interface ReportTemplate {
@@ -50,6 +51,12 @@ export default function ReportsPage() {
           <BarChart3 size={24} className="text-[var(--color-primary)]" />
           <h1 className="text-2xl font-bold text-white">Reports</h1>
         </div>
+        <Link
+          href="/reports/builder"
+          className="flex items-center gap-1.5 rounded border border-[var(--color-border)] px-4 py-2 text-xs text-white/60 transition-colors hover:border-white/10 hover:text-white/80"
+        >
+          <Wrench size={13} /> Custom Report Builder
+        </Link>
       </div>
 
       <div className="flex gap-2">
